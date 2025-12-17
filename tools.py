@@ -25,6 +25,35 @@ def show_loss_save(LOSS_FILE_NAME):
     plt.ylabel("Loss")
     plt.show()
 
+def flat(inp):
+    """
+    Функция преобразует матрицу значений в вектор
+
+    :param inp: матрица на входе
+    :type inp: list
+    :return: выходной вектор
+    :rtype: list
+    """
+    inp = np.array(inp)
+    output_dim = 1
+    for dim in inp.shape:
+        output_dim *= dim
+
+    output = inp.reshape(output_dim)
+    return output.tolist()
+
+def ensure_directory_exists(filepath):
+    """
+    Проверяет существование директории для файла и создает ее если нужно
+
+    :param filepath: путь к файлу
+    :type filepath: str
+    """
+
+    directory = os.path.dirname(filepath)
+    if directory and not os.path.exists(directory):
+        os.makedirs(directory)
+
 def import_h5_model(filename):
     """
     Импорт модели из HDF5 файла
@@ -93,31 +122,47 @@ def export_h5_model(filename, model_data, metadata=None):
                 dataset_name = f'neuron_{j}'
                 layer_grp.create_dataset(dataset_name, data=np.array(neuron_weights))
 
-def flat(inp):
+def save_model_h5(network, filename):
     """
-    Функция преобразует матрицу значений в вектор
+    Сохраняет модель в формате HDF5
 
-    :param inp: матрица на входе
-    :type inp: list
-    :return: выходной вектор
-    :rtype: list
-    """
-    inp = np.array(inp)
-    output_dim = 1
-    for dim in inp.shape:
-        output_dim *= dim
-
-    output = inp.reshape(output_dim)
-    return output.tolist()
-
-def ensure_directory_exists(filepath):
-    """
-    Проверяет существование директории для файла и создает ее если нужно
-
-    :param filepath: путь к файлу
-    :type filepath: str
+    :param network: нейронная сеть
+    :type network: NeuralNetwork
+    :param filename: путь к файлу .h5
+    :type filename: str
     """
 
-    directory = os.path.dirname(filepath)
-    if directory and not os.path.exists(directory):
-        os.makedirs(directory)
+    ensure_directory_exists(filename)
+    model_data = network.export()
+
+    export_h5_model(filename, model_data)
+    print(f"Модель сохранена в {filename}")
+
+def load_model_h5(network, filename):
+    """
+    Загружает модель из формата HDF5
+
+    :param network: нейронная сеть для загрузки весов
+    :type network: NeuralNetwork
+    :param filename: путь к файлу .h5
+    :type filename: str
+    :return: True если загрузка успешна, иначе False
+    :rtype: bool
+    """
+
+    if not os.path.exists(filename):
+        print(f"Файл {filename} не найден")
+        return False
+
+    try:
+        model_data = import_h5_model(filename)
+        if model_data:
+            network.import_(model_data)
+            print(f"Модель загружена из {filename}")
+            return True
+        else:
+            print(f"Не удалось загрузить модель из {filename}")
+            return False
+    except Exception as e:
+        print(f"Ошибка при загрузке модели: {e}")
+        return False

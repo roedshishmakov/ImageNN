@@ -79,51 +79,6 @@ def load_mnist():
         test_data.append((x_test_data[i], y_test_data[i]))
     return [train_data, test_data]
 
-def save_model_h5(network, filename):
-    """
-    Сохраняет модель в формате HDF5
-
-    :param network: нейронная сеть
-    :type network: NeuralNetwork
-    :param filename: путь к файлу .h5
-    :type filename: str
-    """
-
-    ensure_directory_exists(filename)
-    model_data = network.export()
-
-    export_h5_model(filename, model_data)
-    print(f"Модель сохранена в {filename}")
-
-def load_model_h5(network, filename):
-    """
-    Загружает модель из формата HDF5
-
-    :param network: нейронная сеть для загрузки весов
-    :type network: NeuralNetwork
-    :param filename: путь к файлу .h5
-    :type filename: str
-    :return: True если загрузка успешна, иначе False
-    :rtype: bool
-    """
-
-    if not os.path.exists(filename):
-        print(f"Файл {filename} не найден")
-        return False
-
-    try:
-        model_data = tools.import_h5_model(filename)
-        if model_data:
-            network.import_(model_data)
-            print(f"Модель загружена из {filename}")
-            return True
-        else:
-            print(f"Не удалось загрузить модель из {filename}")
-            return False
-    except Exception as e:
-        print(f"Ошибка при загрузке модели: {e}")
-        return False
-
 nn = NeuralNetwork()
 nn.add_input_layer(256)
 nn.add_layer(32, activation_class = activations.ActivationRelu, random_radius=0.1, use_bias = True)
