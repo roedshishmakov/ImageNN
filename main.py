@@ -244,6 +244,72 @@ class BiasNeuron(Neuron):
         """
         return self
 
+class NeuronSoftmax(Neuron):
+    """
+    Нейрон с функцией Softmax
+    """
+
+    def __init__(self, activation_class = act.ActivationSoftmax):
+        """
+        Инициализация нейрона
+
+        :param activation_class: Тип активационной функции
+        :type activation_class: ActivationSoftmax
+        """
+
+        super().__init__(activation_class)
+        self.layer_outputs = None  # Для хранения выходов всего слоя
+        self.softmax_output = 0  # Результат после применения softmax
+
+    def activation(self):
+        """
+        Применение функции активации
+        """
+
+        # Softmax требует вычисления для всего слоя,
+        # поэтому этот метод будет вызываться из LayerSoftmax
+        try:
+            self.output = self.get_activation(self.input)
+            return self
+        except TypeError: raise TypeError(f"Input {self.input} must be of type float")
+
+    def set_softmax_output(self, value):
+        """
+        Устанавливает выход после применения softmax
+
+        :param value: значение с выхода
+        :type value: float
+        """
+
+        self.softmax_output = value
+        self.output = value  # Также обновляем обычный output
+
+    def get_activation(self, x):
+        """
+        Возвращает само значение
+
+        :param x: Значение на входе функции
+        :type x: float
+        :return: Само значение
+        :rtype: float
+        """
+        if not isinstance(x, float):
+            raise TypeError(f"Input {x} must be of type float")
+
+        return x
+
+    def get_activation_derivative(self, x):
+        """
+        Расчет производной активационной функции
+
+        :param x: Значение на входе функции
+        :type x: float
+        :return: Возвращает 1
+        :rtype: float
+        """
+        # Производная будет обрабатываться на уровне слоя
+        return 1
+
 class Link:
     def __init__(self, n_from, n_to, weight):
         """
@@ -548,6 +614,93 @@ class Layer:
 
         return ', '.join([repr(x) for x in self.neurons])
 
+class LayerSoftmax(Layer):
+    """
+    Слой с функцией Softmax
+    """
+
+    def __init__(self, size):
+        """
+        Инициализация
+
+        :param size: размер слоя
+        :type size: int
+        """
+
+        # Используем прозрачную активацию, так как softmax будем применять отдельно
+        super().__init__(NeuronSoftmax, size, act.ActivationTransparent, False)
+
+    def calc(self):
+        """
+        Расчет функции активации для слоя
+        """
+        # Сначала получаем обычные выходы
+        for neuron in self.neurons:
+            neuron.output = neuron.input  # Прозрачная активация
+
+        # Вычисляем softmax для всего слоя
+        softmax_outputs = act.ActivationSoftmax.calc_layer([neuron.output for neuron in self.neurons])
+
+        # Устанавливаем softmax выходы для каждого нейрона
+        for i, neuron in enumerate(self.neurons):
+            neuron.set_softmax_output(softmax_outputs[i])
+
+        return self
+
+    def back_propagation_output_l(self, refs, speed):
+        """
+        Расчет обратного распространения ошибки на уровне слоя
+
+        :param refs: референсы
+        :type refs: list
+        :param speed: скорость обучения
+        :type speed: float
+        """
+
+        # Для softmax с кросс-энтропийной ошибкой градиент упрощается
+        # dL/dz_i = softmax_i - y_i (где y_i - целевое значение)
+
+        for i in range(len(self.neurons)):
+            neuron = self.neurons[i]
+            ref = refs[i]
+
+            # Градиент для softmax с категориальной кросс-энтропией
+            # ∂L/∂z_i = output_i - target_i
+            grad = neuron.output - ref
+
+            # Распространяем градиент на входные связи
+            for link in neuron.link_input:
+                # Вычисляем дельту веса
+                dz_dw = link.n_from.output
+                link.weight_delta = -grad * dz_dw * speed
+                link.weight_delta_param = grad  # Сохраняем для скрытых слоев
+
+        return self
+
+    def get_loss(self, refs):
+        """
+        Метод расчета ошибки методом кросс-энтропии
+
+        :param refs: референсы
+        :type refs: list
+        :return: значение ошибки
+        :rtype: float
+        """
+
+        loss = 0
+        epsilon = 1e-15  # Для численной стабильности
+
+        for i in range(len(self.neurons)):
+            neuron = self.neurons[i]
+            ref = refs[i]
+
+            # Кросс-энтропийная потеря для одного класса
+            # L = -Σ y_i * log(ŷ_i)
+            output_clipped = max(min(neuron.output, 1 - epsilon), epsilon)
+            loss += -ref * math.log(output_clipped)
+
+        return loss
+
 class NeuralNetwork:
     """
     Класс нейронной сети
@@ -656,7 +809,22 @@ class NeuralNetwork:
 
         return self
 
-    def train(self, data, speed, verbose = False):
+    def train(self, data, speed, verbose=False, use_cross_entropy=True):
+        """
+        Метод обучения модели
+
+        :param data: тренировочный датасет
+        :type data: list
+        :param speed: скорость обучения модели
+        :type speed: float
+        :param verbose: отображение подробной информации во время обучения
+        :type verbose: bool
+        :param use_cross_entropy: использовать кросс=энтропию в качестве критерия ошибки
+        :type use_cross_entropy: bool
+        :return: суммарная ошибка
+        :rtype: float
+        """
+
         i = 0
         loss_total = 0
 
