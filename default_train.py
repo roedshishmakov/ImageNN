@@ -1,6 +1,7 @@
 import tools
 import activations
 import keras
+import datetime
 
 from main import *
 from tools import *
@@ -46,8 +47,8 @@ def edit_y_data(traindata, p):
 
     resarr = []
     for x in traindata[:p]:
-        a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        a[x] = 1
+        a = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        a[x] = 1.0
         resarr.append(a)
     return resarr
 
@@ -62,7 +63,7 @@ def load_mnist():
     train_data = []
     test_data = []
 
-    train_num = 1000
+    train_num = 150
     test_num = 100
 
     (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
@@ -78,14 +79,56 @@ def load_mnist():
         test_data.append((x_test_data[i], y_test_data[i]))
     return [train_data, test_data]
 
-DATA_FILE_NAME = "weight_saves/mnist1.json"
-LOSS_FILE_NAME = 'loss_saves/mnist1.txt'
+def save_model_h5(network, filename):
+    """
+    Сохраняет модель в формате HDF5
+
+    :param network: нейронная сеть
+    :type network: NeuralNetwork
+    :param filename: путь к файлу .h5
+    :type filename: str
+    """
+
+    ensure_directory_exists(filename)
+    model_data = network.export()
+
+    export_h5_model(filename, model_data)
+    print(f"Модель сохранена в {filename}")
+
+def load_model_h5(network, filename):
+    """
+    Загружает модель из формата HDF5
+
+    :param network: нейронная сеть для загрузки весов
+    :type network: NeuralNetwork
+    :param filename: путь к файлу .h5
+    :type filename: str
+    :return: True если загрузка успешна, иначе False
+    :rtype: bool
+    """
+
+    if not os.path.exists(filename):
+        print(f"Файл {filename} не найден")
+        return False
+
+    try:
+        model_data = tools.import_h5_model(filename)
+        if model_data:
+            network.import_(model_data)
+            print(f"Модель загружена из {filename}")
+            return True
+        else:
+            print(f"Не удалось загрузить модель из {filename}")
+            return False
+    except Exception as e:
+        print(f"Ошибка при загрузке модели: {e}")
+        return False
 
 nn = NeuralNetwork()
 nn.add_input_layer(256)
-nn.add_layer(32, activation_class = activations.ActivationRelu, random_radius=0.5, use_bias = True)
-nn.add_layer(32, activation_class = activations.ActivationSigmoid, random_radius=0.5, use_bias = True)
-nn.add_layer(10, activation_class = activations.ActivationSigmoid, random_radius=0.5, use_bias = True)
+nn.add_layer(32, activation_class = activations.ActivationRelu, random_radius=0.1, use_bias = True)
+nn.add_layer(32, activation_class = activations.ActivationRelu, random_radius=0.1, use_bias = True)
+nn.add_layer(10, activation_class = activations.ActivationSoftmax, random_radius=0.1)
 
 mnist = load_mnist()
 train_data, test_data = mnist[0], mnist[1]
@@ -95,24 +138,25 @@ print("Do you want to load saved model?(y/n):", end = ' ')
 z = input()
 if z == 'y':
     print("Enter name of save:", end = ' ')
-    DATA_FILE_NAME = "weight_saves/" + input() + ".json"
-    import_data = tools.import_json(DATA_FILE_NAME)
-    nn.import_(import_data)
+    z = input()
+    DATA_FILE_NAME = "weight_saves/" + z + ".h5"
+    LOSS_FILE_NAME = "loss_saves/" + z + ".txt"
+    load_model_h5(nn, DATA_FILE_NAME)
 else:
     print("Enter new save name:", end = ' ')
     z = input()
-    DATA_FILE_NAME = "weight_saves/" + z + ".json"
+    DATA_FILE_NAME = "weight_saves/" + z + ".h5"
     LOSS_FILE_NAME = "loss_saves/" + z + ".txt"
     total_loss_statistics = []
     print("Enter number of Epochs:", end = ' ')
     ep = int(input())
     for i in range(ep):
         print('EPOCH #{}'.format(i))
-        loss_total = nn.train(train_data, 0.1)
+        loss_total = nn.train(train_data, 0.01, verbose = True)
         print('LOSS: {:.4f}'.format(loss_total))
         total_loss_statistics.append(loss_total)
 
-    tools.export_json(DATA_FILE_NAME, nn.export())
+    save_model_h5(nn, DATA_FILE_NAME)
     f = open(LOSS_FILE_NAME, 'w')
     for s in total_loss_statistics:
         f.write(str(s) + '\n')

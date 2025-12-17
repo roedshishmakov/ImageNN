@@ -99,7 +99,7 @@ class Neuron:
 
         try:
             return self.activation_class.calc(x)
-        except: TypeError(f"Input {x} must be of type float")
+        except: raise (f"Input {x} must be of type float")
 
     def send(self):
         """
@@ -352,7 +352,7 @@ class Link:
         """
 
         if not isinstance(ref, float):
-            raise TypeError(f"Speed {ref} must be of type float")
+            raise TypeError(f"Speed {speed} must be of type float")
         if not isinstance(speed, float):
             raise TypeError(f"Speed {speed} must be of type float")
 
@@ -442,6 +442,7 @@ class Layer:
 
         self.neurons = []
         self.bias = None
+        self.activation_class = activation_class
 
         for _ in range(size):
             self.neurons.append(neuron_class(activation_class()))
@@ -629,6 +630,7 @@ class LayerSoftmax(Layer):
 
         # Используем прозрачную активацию, так как softmax будем применять отдельно
         super().__init__(NeuronSoftmax, size, act.ActivationTransparent, False)
+        self.activation_class = act.ActivationSoftmax
 
     def calc(self):
         """
@@ -727,7 +729,10 @@ class NeuralNetwork:
         :param use_bias: использовать смещение
         :type use_bias: bool
         """
-        layer = Layer(neuron_class, size, activation_class, use_bias)
+
+        if type(neuron_class) == NeuronSoftmax:
+            layer = LayerSoftmax(size)
+        else: layer = Layer(neuron_class, size, activation_class, use_bias)
         self.layers.append(layer)
 
         if len(self.layers) > 1:
@@ -754,7 +759,11 @@ class NeuralNetwork:
         :param use_bias: использовать смещение
         :type use_bias: bool
         """
-        self._add_layer(Neuron, size, activation_class, random_radius, use_bias)
+        if activation_class == act.ActivationSoftmax:
+            # Для softmax используем специальный нейрон
+            self._add_layer(NeuronSoftmax, size, activation_class, random_radius, use_bias)
+        else:
+            self._add_layer(Neuron, size, activation_class, random_radius, use_bias)
         return self
 
     def add_input_layer(self, size):
@@ -809,7 +818,7 @@ class NeuralNetwork:
 
         return self
 
-    def train(self, data, speed, verbose=False, use_cross_entropy=True):
+    def train(self, data, speed, verbose=False, use_cross_entropy=True, clip_value=5.0):
         """
         Метод обучения модели
 
@@ -838,11 +847,16 @@ class NeuralNetwork:
             self.run(input)
 
             output_layer = self.layers[-1]
+            # Просто вызываем get_loss, который уже переопределен в LayerSoftmax
             loss_sum = output_layer.get_loss(refs)
             loss_total += loss_sum
 
             if verbose:
                 print(f"item #{i}, loss: {loss_sum}")
+                # Добавьте отладочную информацию:
+                print(f"  Output: {[round(o, 3) for o in self.get_output()]}")
+                print(f"  Target: {[round(r, 3) for r in refs]}")
+                print(f"  Predicted: {self.get_best_index()}, Actual: {refs.index(1.0) if 1.0 in refs else 'N/A'}")
 
             output_layer.back_propagation_output_l(refs, speed)
 
@@ -850,6 +864,13 @@ class NeuralNetwork:
 
             for layer in other_layers:
                 layer.back_propagation_hidden_l(speed)
+
+            if clip_value is not None:
+                for layer in self.layers:
+                    for neuron in layer.neurons:
+                        for link in neuron.link_input:
+                            if abs(link.weight_delta) > clip_value:
+                                link.weight_delta = clip_value if link.weight_delta > 0 else -clip_value
 
             for layer in self.layers:
                 layer.back_propagation_apply()
@@ -872,6 +893,30 @@ class NeuralNetwork:
 
         return res
 
+    # def import_(self, layers_data):
+    #     """
+    #     Функция импортирования сохраненной модели
+    #
+    #     :param layers_data: сохраненные данные
+    #     :type layers_data: list
+    #     """
+    #
+    #     if not len(self.layers):
+    #         self.add_input_layer(len(layers_data[0]))
+    #
+    #         for i in range(1, len(layers_data) - 1):
+    #             self.add_layer(len(layers_data[i]))
+    #
+    #         self.add_layer(len(layers_data[-1]))
+    #
+    #     for i in range(len(layers_data)):
+    #         layer_data = layers_data[i]
+    #         layer = self.layers[i]
+    #
+    #         layer.import_(layer_data)
+    #
+    #     return self
+
     def import_(self, layers_data):
         """
         Функция импортирования сохраненной модели
@@ -880,18 +925,38 @@ class NeuralNetwork:
         :type layers_data: list
         """
 
-        if not len(self.layers):
-            self.add_input_layer(len(layers_data[0]))
+        # Если сеть пустая, создаем ее структуру на основе данных
+        # if not len(self.layers):
+        #     # Первый слой - входной
+        #     input_size = len(layers_data[0])
+        #     self.add_input_layer(input_size)
+        #
+        #     # Промежуточные слои (предполагаем ReLU)
+        #     for i in range(1, len(layers_data) - 1):
+        #         layer_size = len(layers_data[i])
+        #         self.add_layer(layer_size, activation_class=act.ActivationRelu,
+        #                        random_radius=0.1, use_bias=True)
 
-            for i in range(1, len(layers_data) - 1):
-                self.add_layer(len(layers_data[i]))
+            # Выходной слой (предполагаем Softmax для 10 классов)
+            # output_size = len(layers_data[-1])
+            # self.add_layer(output_size, activation_class=act.ActivationSoftmax,
+            #                random_radius=0.1, use_bias=False)
 
-            self.add_layer(len(layers_data[-1]))
+        if len(self.layers) != len(layers_data):
+            raise ValueError(f"Несоответствие количества слоев: "
+                             f"сеть имеет {len(self.layers)} слоев, "
+                             f"данные содержат {len(layers_data)} слоев")
 
+        for i in range(len(self.layers)):
+            if len(self.layers[i]) != len(layers_data[i]):
+                raise ValueError(f"Несоответствие размера слоя {i}: "
+                                 f"сеть имеет {len(self.layers[i])} нейронов, "
+                                 f"данные содержат {len(layers_data[i])} нейронов")
+
+        # Импортируем веса
         for i in range(len(layers_data)):
             layer_data = layers_data[i]
             layer = self.layers[i]
-
             layer.import_(layer_data)
 
         return self

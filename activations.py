@@ -10,7 +10,7 @@ class ActivationBase:
         pass
 
     @abstractmethod
-    def derviative(cls, x):
+    def derivative(cls, x):
         pass
 
 class ActivationTransparent(ActivationBase):
@@ -122,7 +122,7 @@ class ActivationSoftmax(ActivationBase):
     @classmethod
     def calc(cls, x):
         """
-        Функция для обработки исключения
+        Функция для обработки исключения в случае вызова calc
 
         :param x: входное значение
         :raises NotImplementedError: если метод calc использован для функции Softmax
@@ -151,11 +151,22 @@ class ActivationSoftmax(ActivationBase):
         :return: выходные значения
         :rtype: list
         """
+
         if not isinstance(layer_outputs, list):
             raise TypeError('layer_outputs must be list')
 
-        exp_values = [math.exp(x - max(layer_outputs)) for x in layer_outputs]
+        max_val = max(layer_outputs)
+
+        if max_val > 100:
+            scale_factor = max_val / 100
+            layer_outputs = [x / scale_factor for x in layer_outputs]
+            max_val = max(layer_outputs)
+
+        exp_values = [math.exp(x - max_val) for x in layer_outputs]
         exp_sum = sum(exp_values)
+
+        if exp_sum == 0:
+            return [1.0 / len(layer_outputs) for _ in layer_outputs]
 
         softmax_outputs = [exp_val / exp_sum for exp_val in exp_values]
         return softmax_outputs

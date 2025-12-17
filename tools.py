@@ -30,6 +30,8 @@ def import_h5_model(filename):
     Импорт модели из HDF5 файла
 
     :param filename: путь к файлу .h5
+    :return: данные модели в формате списка слоев
+    :rtype: list
     """
 
     if not os.path.exists(filename):
@@ -39,14 +41,25 @@ def import_h5_model(filename):
         layers_data = []
 
         if 'layers' in f:
-            for layer_name in sorted(f['layers'].keys()):
-                layer_grp = f[f'layers/{layer_name}']
+            layer_groups = []
+            for key in f['layers'].keys():
+                if key.startswith('layer_'):
+                    layer_groups.append(key)
+
+            layer_groups.sort(key=lambda x: int(x.split('_')[1]))
+
+            for layer_key in layer_groups:
+                layer_grp = f[f'layers/{layer_key}']
                 layer_weights = []
 
-                neuron_datasets = [key for key in layer_grp.keys()
-                                   if key.startswith('neuron_')]
+                neuron_keys = []
+                for key in layer_grp.keys():
+                    if key.startswith('neuron_'):
+                        neuron_keys.append(key)
 
-                for neuron_key in sorted(neuron_datasets):
+                neuron_keys.sort(key=lambda x: int(x.split('_')[1]))
+
+                for neuron_key in neuron_keys:
                     weights = layer_grp[neuron_key][:].tolist()
                     layer_weights.append(weights)
 
@@ -54,7 +67,7 @@ def import_h5_model(filename):
 
         return layers_data
 
-def export_h5_model(filename, model_data):
+def export_h5_model(filename, model_data, metadata=None):
     """
     Экспорт модели в HDF5 файл
 
@@ -67,33 +80,18 @@ def export_h5_model(filename, model_data):
     """
 
     with h5py.File(filename, 'w') as f:
+        if metadata:
+            for key, value in metadata.items():
+                f.attrs[key] = value
+
         layers_grp = f.create_group('layers')
 
         for i, layer_weights in enumerate(model_data):
             layer_grp = layers_grp.create_group(f'layer_{i}')
 
             for j, neuron_weights in enumerate(layer_weights):
-                if neuron_weights:
-                    layer_grp.create_dataset(f'neuron_{j}_weights',
-                                             data=np.array(neuron_weights))
-
-def import_json(filename):
-    if not os.path.exists(filename):
-        return False
-
-    r = ''
-    with open(filename, 'r') as f:
-        for line in f:
-            r += line
-    try:
-        return json.loads(r)
-    except json.decoder.JSONDecodeError:
-        raise Exception(f'Could not parse {filename}')
-
-def export_json(filename, data):
-    r = json.dumps(data, sort_keys=True,indent=4)
-    with open(filename, 'w') as f:
-        f.write(r)
+                dataset_name = f'neuron_{j}'
+                layer_grp.create_dataset(dataset_name, data=np.array(neuron_weights))
 
 def flat(inp):
     """
@@ -111,3 +109,15 @@ def flat(inp):
 
     output = inp.reshape(output_dim)
     return output.tolist()
+
+def ensure_directory_exists(filepath):
+    """
+    Проверяет существование директории для файла и создает ее если нужно
+
+    :param filepath: путь к файлу
+    :type filepath: str
+    """
+
+    directory = os.path.dirname(filepath)
+    if directory and not os.path.exists(directory):
+        os.makedirs(directory)
