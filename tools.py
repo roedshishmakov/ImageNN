@@ -166,3 +166,101 @@ def load_model_h5(network, filename):
     except Exception as e:
         print(f"Ошибка при загрузке модели: {e}")
         return False
+
+def save_config(config, filename):
+    """
+    Сохраняет конфигурацию сети в текстовый файл
+
+    :param config: конфигурация сети (словарь с layers и training)
+    :type config: dict
+    :param filename: путь к файлу .config
+    :type filename: str
+    """
+
+    ensure_directory_exists(filename)
+
+    with open(filename, 'w') as f:
+        f.write("# Конфигурация нейронной сети\n")
+        f.write("# Формат: [layer_type]:[size]:[activation]:[use_bias]:[random_radius]\n\n")
+
+        for layer in config['layers']:
+            use_bias_str = 'true' if layer['use_bias'] else 'false'
+            f.write(f"dense:{layer['size']}:{layer['activation']}:{use_bias_str}:{layer['random_radius']}\n")
+
+        f.write("\n# Параметры обучения\n")
+        for key, value in config['training'].items():
+            f.write(f"{key}={value}\n")
+
+    print(f"Конфигурация сохранена в {filename}")
+
+def load_config(filename):
+    """
+    Загружает конфигурацию сети из текстового файла
+
+    :param filename: путь к файлу .config
+    :type filename: str
+    :return: конфигурация сети
+    :rtype: dict
+    """
+
+    if not os.path.exists(filename):
+        raise FileNotFoundError(f"Config file not found: {filename}")
+
+    config = {
+        'layers': [],
+        'training': {}
+    }
+
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+
+    in_training_section = False
+
+    for line_num, line in enumerate(lines, 1):
+        line = line.strip()
+
+        if not line or line.startswith('#'):
+            if config['layers'] and not in_training_section:
+                in_training_section = True
+            continue
+
+        if not in_training_section:
+            parts = line.split(':')
+            if len(parts) != 5:
+                raise ValueError(f"Ошибка в строке {line_num}: неверный формат слоя")
+
+            layer_config = {
+                'type': parts[0].strip(),
+                'size': int(parts[1].strip()),
+                'activation': parts[2].strip(),
+                'use_bias': parts[3].strip().lower() == 'true',
+                'random_radius': float(parts[4].strip())
+            }
+
+            config['layers'].append(layer_config)
+        else:
+            if '=' in line:
+                key, value = line.split('=', 1)
+                key = key.strip()
+                value = value.strip()
+
+                if key in ['epochs']:
+                    config['training'][key] = int(value)
+                elif key in ['learning_rate', 'clip_value']:
+                    config['training'][key] = float(value)
+                elif key in ['use_cross_entropy']:
+                    config['training'][key] = value.lower() == 'true'
+                else:
+                    config['training'][key] = value
+
+    # Значения по умолчанию
+    if 'learning_rate' not in config['training']:
+        config['training']['learning_rate'] = 0.1
+    if 'epochs' not in config['training']:
+        config['training']['epochs'] = 10
+    if 'clip_value' not in config['training']:
+        config['training']['clip_value'] = 5.0
+    if 'use_cross_entropy' not in config['training']:
+        config['training']['use_cross_entropy'] = True
+
+    return config
