@@ -7,15 +7,25 @@ import activations as act
 class Neuron:
     """
     Класс нейрона
+
+    :ivar activation_class: класс активационной функции
+    :type activation_class: ActivationBase
+    :ivar input: вход нейрона
+    :type input: float
+    :ivar output: выход нейрона
+    :type output: float
+    :ivar link_input: список линков на вход
+    :type link_input: list
+    :ivar link_output: список линков на выход
+    :type link_output: list
     """
 
     def __init__(self, activation_class):
         """
-        Инициализация нейрона
+        Конструктор класса
 
         :param activation_class:  Активационная функция
         :type activation_class: ActivationBase
-        :raises IncorrectActivationClass: если введенный тип активации не существует
         """
         self.activation_class = activation_class
         self.input = 0
@@ -27,8 +37,9 @@ class Neuron:
         """
         Добавление линка на вход
 
-        :param link: Добавляемый линк
+        :param link: добавляемый линк
         :type link: Link
+        :raises TypeError: при добавлении в список линков не линка
         """
 
         if not isinstance(link, Link):
@@ -41,8 +52,9 @@ class Neuron:
         """
         Добавление линка на выход
 
-        :param link: Добавляемый линк
+        :param link: добавляемый линк
         :type link: Link
+        :raises TypeError: при добавлении не линка в список выходных линков
         """
 
         if not isinstance(link, Link):
@@ -55,7 +67,7 @@ class Neuron:
         """
         Подача сигнала на вход нейрона
 
-        :param signal: Подаванемый сигнал
+        :param signal: подаваемый сигнал
         """
 
         if not isinstance(signal, float):
@@ -68,7 +80,7 @@ class Neuron:
         """
         Сброс входа нейрона
 
-        :param input: Новый вход, по умолчанию None
+        :param input: новый вход, по умолчанию None
         :type input: int
         """
 
@@ -93,7 +105,7 @@ class Neuron:
 
         :param x: вход
         :type x: float
-        :return: Результат активации
+        :return: результат активации
         :rtype: float
         """
 
@@ -114,9 +126,9 @@ class Neuron:
         """
         Алгоритм обратного распространения ошибки для выходного уровня
 
-        :param ref: Тренировочный пример
+        :param ref: тренировочный пример
         :type ref: float
-        :param speed: Скорость обучения
+        :param speed: скорость обучения
         :type speed: float
         """
 
@@ -128,7 +140,7 @@ class Neuron:
         """
         Алгоритм обратного распространения ошибки для скрытых уровней
 
-        :param speed: Скорость обучения
+        :param speed: скорость обучения
         :type speed: float
         """
 
@@ -189,11 +201,11 @@ class Neuron:
         """
         Метод поиска потерь
 
-        :param output: Выходное значение
+        :param output: выходное значение
         :type output: float
-        :param ref: Референс
+        :param ref: референс
         :type ref: float
-        :return: Потеря
+        :return: потеря
         :rtype: float
         """
 
@@ -227,7 +239,7 @@ class BiasNeuron(Neuron):
     """
     def __init__(self, activation_class):
         """
-        Инициализация нейрона
+        Конструктор класса
 
         :param activation_class: тип активационной функции
         :type activation_class: ActivationBase
@@ -251,9 +263,9 @@ class NeuronSoftmax(Neuron):
 
     def __init__(self, activation_class = act.ActivationSoftmax):
         """
-        Инициализация нейрона
+        Конструктор класса
 
-        :param activation_class: Тип активационной функции
+        :param activation_class: тип активационной функции
         :type activation_class: ActivationSoftmax
         """
 
@@ -288,9 +300,9 @@ class NeuronSoftmax(Neuron):
         """
         Возвращает само значение
 
-        :param x: Значение на входе функции
+        :param x: значение на входе функции
         :type x: float
-        :return: Само значение
+        :return: само значение
         :rtype: float
         """
         if not isinstance(x, float):
@@ -302,15 +314,26 @@ class NeuronSoftmax(Neuron):
         """
         Расчет производной активационной функции
 
-        :param x: Значение на входе функции
+        :param x: значение на входе функции
         :type x: float
-        :return: Возвращает 1
-        :rtype: float
+        :return: возвращает 1
+        :rtype: int
         """
         # Производная будет обрабатываться на уровне слоя
         return 1
 
 class Link:
+    """
+    Класс 'линка'
+
+    :ivar n_from: нейрон, из которого получают данные
+    :type n_from: Neuron
+    :ivar n_to: нейрон, в который передаются данные
+    :type n_to: Neuron
+    :ivar weight: вес
+    :type weight: float
+    """
+
     def __init__(self, n_from, n_to, weight):
         """
         Инициализация объекта
@@ -345,9 +368,9 @@ class Link:
         """
         Метод обратного распространения ошибки для выходного слоя
 
-        :param ref: Пример
+        :param ref: пример
         :type ref: float
-        :param speed: Скорость обучения
+        :param speed: скорость обучения
         :type speed: float
         """
 
@@ -424,11 +447,21 @@ class Link:
 
 class Layer:
     """
-    Класс уровня
+    Класс слоя
+
+    :ivar neuron_class: тип нейронов в уровне
+    :type neuron_class: Neuron
+    :ivar size: количество нейронов в классе
+    :type size: int
+    :ivar activation_class: тип активационной функции нейронов
+    :type activation_class: ActivationBase
+    :ivar use_bias: ипользование нейрона смещения
+    :type use_bias: bool
     """
+
     def __init__(self, neuron_class, size, activation_class, use_bias = False):
         """
-        Инициализация
+        Конструктор класса
 
         :param neuron_class: тип нейронов в уровне
         :type neuron_class: Neuron
@@ -589,7 +622,7 @@ class Layer:
         """
         Метод нахождения размера слоя
 
-        :return: Число нейронов в слое
+        :return: число нейронов в слое
         :rtype: int
         """
 
@@ -599,7 +632,7 @@ class Layer:
         """
         Метод преобразования в строку
 
-        :return: Строка со значениями нейронов
+        :return: строка со значениями нейронов
         :rtype: str
         """
 
@@ -609,7 +642,7 @@ class Layer:
         """
         Служебный метод вывода данных слоя
 
-        :return: Строка с данными слоя
+        :return: строка с данными слоя
         :rtype: str
         """
 
@@ -624,11 +657,10 @@ class LayerSoftmax(Layer):
         """
         Инициализация
 
-        :param size: размер слоя
+        :param size: количество нейронов в слое
         :type size: int
         """
 
-        # Используем прозрачную активацию, так как softmax будем применять отдельно
         super().__init__(NeuronSoftmax, size, act.ActivationTransparent, False)
         self.activation_class = act.ActivationSoftmax
 
@@ -636,14 +668,12 @@ class LayerSoftmax(Layer):
         """
         Расчет функции активации для слоя
         """
-        # Сначала получаем обычные выходы
-        for neuron in self.neurons:
-            neuron.output = neuron.input  # Прозрачная активация
 
-        # Вычисляем softmax для всего слоя
+        for neuron in self.neurons:
+            neuron.output = neuron.input
+
         softmax_outputs = act.ActivationSoftmax.calc_layer([neuron.output for neuron in self.neurons])
 
-        # Устанавливаем softmax выходы для каждого нейрона
         for i, neuron in enumerate(self.neurons):
             neuron.set_softmax_output(softmax_outputs[i])
 
@@ -659,23 +689,16 @@ class LayerSoftmax(Layer):
         :type speed: float
         """
 
-        # Для softmax с кросс-энтропийной ошибкой градиент упрощается
-        # dL/dz_i = softmax_i - y_i (где y_i - целевое значение)
-
         for i in range(len(self.neurons)):
             neuron = self.neurons[i]
             ref = refs[i]
 
-            # Градиент для softmax с категориальной кросс-энтропией
-            # ∂L/∂z_i = output_i - target_i
             grad = neuron.output - ref
 
-            # Распространяем градиент на входные связи
             for link in neuron.link_input:
-                # Вычисляем дельту веса
                 dz_dw = link.n_from.output
                 link.weight_delta = -grad * dz_dw * speed
-                link.weight_delta_param = grad  # Сохраняем для скрытых слоев
+                link.weight_delta_param = grad
 
         return self
 
@@ -706,6 +729,9 @@ class LayerSoftmax(Layer):
 class NeuralNetwork:
     """
     Класс нейронной сети
+
+    :ivar layers: список слоев сети
+    :type layers: list
     """
 
     def __init__(self):
@@ -780,7 +806,7 @@ class NeuralNetwork:
         """
         Метод возвращает выходной слой модели
 
-        :return: Выходной слой
+        :return: выходной слой
         :rtype: Layer
         """
 
@@ -893,30 +919,6 @@ class NeuralNetwork:
 
         return res
 
-    # def import_(self, layers_data):
-    #     """
-    #     Функция импортирования сохраненной модели
-    #
-    #     :param layers_data: сохраненные данные
-    #     :type layers_data: list
-    #     """
-    #
-    #     if not len(self.layers):
-    #         self.add_input_layer(len(layers_data[0]))
-    #
-    #         for i in range(1, len(layers_data) - 1):
-    #             self.add_layer(len(layers_data[i]))
-    #
-    #         self.add_layer(len(layers_data[-1]))
-    #
-    #     for i in range(len(layers_data)):
-    #         layer_data = layers_data[i]
-    #         layer = self.layers[i]
-    #
-    #         layer.import_(layer_data)
-    #
-    #     return self
-
     def import_(self, layers_data):
         """
         Функция импортирования сохраненной модели
@@ -924,23 +926,6 @@ class NeuralNetwork:
         :param layers_data: сохраненные данные
         :type layers_data: list
         """
-
-        # Если сеть пустая, создаем ее структуру на основе данных
-        # if not len(self.layers):
-        #     # Первый слой - входной
-        #     input_size = len(layers_data[0])
-        #     self.add_input_layer(input_size)
-        #
-        #     # Промежуточные слои (предполагаем ReLU)
-        #     for i in range(1, len(layers_data) - 1):
-        #         layer_size = len(layers_data[i])
-        #         self.add_layer(layer_size, activation_class=act.ActivationRelu,
-        #                        random_radius=0.1, use_bias=True)
-
-            # Выходной слой (предполагаем Softmax для 10 классов)
-            # output_size = len(layers_data[-1])
-            # self.add_layer(output_size, activation_class=act.ActivationSoftmax,
-            #                random_radius=0.1, use_bias=False)
 
         if len(self.layers) != len(layers_data):
             raise ValueError(f"Несоответствие количества слоев: "

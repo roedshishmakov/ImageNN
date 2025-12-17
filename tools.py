@@ -67,7 +67,7 @@ def import_h5_model(filename):
 
         return layers_data
 
-def export_h5_model(filename, model_data, metadata=None):
+def export_h5_model(filename, model_data):
     """
     Экспорт модели в HDF5 файл
 
@@ -75,15 +75,9 @@ def export_h5_model(filename, model_data, metadata=None):
     :type filename: str
     :param model_data: данные модели
     :type model_data: list
-    :param metadata: метаданные
-    :type metadata: dict
     """
 
     with h5py.File(filename, 'w') as f:
-        if metadata:
-            for key, value in metadata.items():
-                f.attrs[key] = value
-
         layers_grp = f.create_group('layers')
 
         for i, layer_weights in enumerate(model_data):
