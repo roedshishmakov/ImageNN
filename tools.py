@@ -15,15 +15,17 @@ def show_loss_save(LOSS_FILE_NAME):
 
     tls = []
     i = 0
-    with open(LOSS_FILE_NAME) as f:
-        for s in f:
-            tls.append([i, float(s[:-1])])
-            i += 1
-    plt.plot([x[0] for x in tls], [y[1] for y in tls])
-    plt.title("Total loss")
-    plt.xlabel("Number of epochs")
-    plt.ylabel("Loss")
-    plt.show()
+    try:
+        with open(LOSS_FILE_NAME) as f:
+            for s in f:
+                tls.append([i, float(s[:-1])])
+                i += 1
+        plt.plot([x[0] for x in tls], [y[1] for y in tls])
+        plt.title("Total loss")
+        plt.xlabel("Number of epochs")
+        plt.ylabel("Loss")
+        plt.show()
+    except Exception: raise FileNotFoundError("Cannot show loss from file {}".format(LOSS_FILE_NAME))
 
 def flat(inp):
     """
