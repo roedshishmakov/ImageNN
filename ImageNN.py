@@ -4,34 +4,10 @@ import tools
 import activations
 
 import numpy as np
-import matplotlib.pyplot as plt
 
 from PIL import Image
 from main import *
 from exceptions import *
-
-def show_loss_graph_only(model_name):
-    """
-    Функция отображения графика потерь без загрузки модели
-
-    :param model_name: имя модели для отображения графика
-    :type model_name: str
-    """
-
-    loss_file = f"loss_saves/{model_name}.txt"
-
-    if not os.path.exists(loss_file):
-        raise PathError(f"Файл с потерями не найден: {loss_file}. Сначала обучите модель.")
-
-    try:
-        with open(loss_file, 'r') as f:
-            losses = [float(line.strip()) for line in f if line.strip()]
-
-        if not losses:
-            raise ValidationError(f"Файл {loss_file} пуст или содержит некорректные данные")
-
-        tools.show_loss_save("loss_saves/" + model_name + ".txt")
-    except Exception as e: raise ValidationError(f"Ошибка при чтении данных из файла {loss_file}: {e}")
 
 def create_standart_nn():
     """
@@ -226,87 +202,91 @@ def save_config_to_file(config, filename):
 
     print(f"Конфигурация сохранена в {filename}")
 
-def fine_model(model_name, new_data_path, additional_epochs = 5, learning_rate = 0.01):
-    """
-    Функция дообучения существующей модели на новом датасете
-
-    :param model_name: имя модели для дообучения
-    :type model_name: str
-    :param new_data_path: путь к новому датасету
-    :type new_data_path: str
-    :param additional_epochs: количество дополнительных эпох обучения
-    :type additional_epochs: int
-    :param learning_rate: скорость обучения для дообучения
-    :type learning_rate: float
-    """
-
-    model_path = f"weight_saves/{model_name}.h5"
-    config_path = f"configs/{model_name}.config"
-    loss_file = f"loss_saves/{model_name}.txt"
-
-    if not os.path.exists(model_path):
-        raise PathError(f"Модель {model_name} не найдена. Сначала обучите модель.")
-
-    if not os.path.exists(config_path):
-        print("Внимание: конфигурационный файл не найден, используется стандартная архитектура")
-        config = {
-            'layers': [
-                {'type': 'dense', 'size': 32, 'activation': 'relu', 'use_bias': True, 'random_radius': 0.1},
-                {'type': 'dense', 'size': 32, 'activation': 'relu', 'use_bias': True, 'random_radius': 0.1},
-                {'type': 'dense', 'size': 10, 'activation': 'softmax', 'use_bias': False, 'random_radius': 0.1}
-            ],
-            'training': {
-                'learning_rate': learning_rate,
-                'epochs': additional_epochs,
-                'clip_value': 5.0,
-                'use_cross_entropy': True
-            }
-        }
-    else:
-        config = parse_config_file(config_path)
-        config['training']['learning_rate'] = learning_rate
-        config['training']['epochs'] = additional_epochs
-
-    nn = create_network_from_config(config)
-
-    if not tools.load_model_h5(nn, model_path):
-        raise ValidationError(f"Не удалось загрузить модель {model_name}")
-
-    previous_losses = []
-    if os.path.exists(loss_file):
-        with open(loss_file, 'r') as f:
-            previous_losses = [float(line.strip()) for line in f if line.strip()]
-    else: print("Не удалось загрузить файл потерь")
-
-    new_data = load_examples(new_data_path, 1)
-    print(f"Загружено {len(new_data)} примеров для дообучения из {new_data_path}")
-
-    total_loss_statistics = []
-
-    training_config = config['training']
-    clip_value = training_config.get('clip_value', 5.0)
-    use_cross_entropy = training_config.get('use_cross_entropy', True)
-
-    for i in range(additional_epochs):
-        print(f'AdEPOCH #{i + 1}/{additional_epochs}')
-        loss_total = nn.train(new_data, learning_rate,
-                              verbose=False,
-                              clip_value=clip_value,
-                              use_cross_entropy=use_cross_entropy)
-        print(f'LOSS: {loss_total:.4f}')
-        total_loss_statistics.append(loss_total)
-
-    tools.save_model_h5(nn, model_path)
-
-    with open(loss_file, 'a') as f:
-        for loss in total_loss_statistics:
-            f.write(f"{loss}\n")
-
-    if os.path.exists(config_path):
-        config['training']['total_epochs'] = config['training'].get('total_epochs', 0) + additional_epochs
-        save_config_to_file(config, config_path)
-
-    return nn
+# def validate_arguments(flags, args):
+#     """
+#     Функция проверки корректности входных аргументов команды
+#
+#     :param flags: список флагов
+#     :type flags: list[str]
+#     :param args: список аргументов
+#     :type args: list[str]
+#     :raises ArgumentError: при недостаточном количестве аргументов
+#     :raises ValidationError: при неправильном формате аргументов
+#     :raises PathError: при неверно указанном пути
+#     :raises EpochError: при неверно указанных эпохах
+#     :raises IncorrectCommand: при неверной комбинации флагов
+#     """
+#
+#     required_args = {
+#         '--load': 2,
+#         '-l': 2,
+#         '--train': 3,
+#         '-t': 3,
+#         '--graph': 1,
+#         '-g': 1,
+#         '--help': 0,
+#         '-h': 0
+#     }
+#
+#     if not flags:
+#         raise ArgumentError("No command specified. Use --help for usage information.")
+#
+#     main_flag = flags[0]
+#
+#     if main_flag not in required_args:
+#         raise ValidationError(f"Unknown command flag: {main_flag}")
+#
+#     required_count = required_args[main_flag]
+#     if len(args) < required_count:
+#         if main_flag in ['--load', '-l']:
+#             raise ArgumentError(f"{main_flag} requires {required_count} arguments: model_name and images_path")
+#         elif main_flag in ['--train', '-t']:
+#             raise ArgumentError(
+#                 f"{main_flag} requires {required_count} arguments: model_name, epochs, and train_dataset_path")
+#         elif main_flag in ['--graph', '-g']:
+#             raise ArgumentError(f"{main_flag} requires {required_count} argument: model_name")
+#         else:
+#             raise ArgumentError(f"Insufficient arguments for {main_flag}")
+#
+#     if main_flag in ['--train', '-t']:
+#         try:
+#             epochs = int(args[1])
+#             if epochs <= 0:
+#                 raise EpochError(f"Number of epochs must be positive, got {epochs}")
+#             if epochs > 10000:
+#                 raise EpochError(f"Number of epochs too high: {epochs}. Maximum is 10000")
+#         except ValueError:
+#             raise EpochError(f"Epochs must be an integer, got '{args[1]}'")
+#
+#         if not os.path.exists(args[2]):
+#             raise PathError(f"Training dataset path does not exist: {args[2]}")
+#
+#     elif main_flag in ['--load', '-l']:
+#         if not os.path.exists(args[1]):
+#             raise PathError(f"Test images path does not exist: {args[1]}")
+#
+#     elif main_flag in ['--graph', '-g']:
+#         loss_file = "loss_saves/" + args[0] + ".txt"
+#         if not os.path.exists(loss_file):
+#             raise PathError(f"Loss file not found: {loss_file}. Train the model first.")
+#
+#     if len(flags) > 1:
+#         for flag in flags[1:]:
+#             if flag not in ['--graph', '-g']:
+#                 raise ValidationError(f"Unexpected flag: {flag}. Only --graph/-g can be used with other flags")
+#
+#             if main_flag not in ['--load', '-l', '--train', '-t']:
+#                 raise ValidationError("--graph flag can only be used with --load or --train")
+#
+#     # Проверка конфликтов флагов
+#     flag_set = set(flags)
+#     conflicting_combinations = [
+#         {'--load', '--train'}, {'-l', '-t'}, {'-l', '--train'}, {'--load', '-t'}
+#     ]
+#
+#     for combo in conflicting_combinations:
+#         if combo.issubset(flag_set):
+#             raise IncorrectCommand(f"Cannot use {combo} together. Choose either loading or training.")
 
 def validate_arguments(flags, args):
     """
@@ -324,11 +304,7 @@ def validate_arguments(flags, args):
         '--create-config': 1,
         '-c': 1,
         '--simple-train': 3,
-        '-s': 3,
-        '--fine-tune': 3,
-        '-f': 3,
-        '--show-loss': 1,  # Новая команда - показ графика без загрузки модели
-        '-sl': 1  # Сокращенная форма
+        '-s': 3
     }
 
     if not flags:
@@ -353,11 +329,6 @@ def validate_arguments(flags, args):
             raise ArgumentError(f"{main_flag} requires {required_count} argument: model_name")
         elif main_flag in ['--create-config', '-c']:
             raise ArgumentError(f"{main_flag} requires {required_count} argument: config_name")
-        elif main_flag in ['--fine-tune', '-f']:
-            raise ArgumentError(
-                f"{main_flag} requires {required_count} arguments: model_name, additional_epochs, and new_dataset_path")
-        elif main_flag in ['--show-loss', '-sl']:  # Добавляем проверку для новой команды
-            raise ArgumentError(f"{main_flag} requires {required_count} argument: model_name")
         else:
             raise ArgumentError(f"Insufficient arguments for {main_flag}")
 
@@ -390,52 +361,25 @@ def validate_arguments(flags, args):
         if not os.path.exists(loss_file):
             raise PathError(f"Loss file not found: {loss_file}. Train the model first.")
 
-    elif main_flag in ['--show-loss', '-sl']:  # Проверка для новой команды
-        loss_file = "loss_saves/" + args[0] + ".txt"
-        if not os.path.exists(loss_file):
-            raise PathError(f"Loss file not found: {loss_file}. Train the model first.")
-
-    elif main_flag in ['--fine-tune', '-f']:
-        try:
-            epochs = int(args[1])
-            if epochs <= 0:
-                raise EpochError(f"Number of epochs must be positive, got {epochs}")
-            if epochs > 1000:  # Ограничиваем дообучение 1000 эпохами
-                raise EpochError(f"Number of epochs too high: {epochs}. Maximum for fine-tuning is 1000")
-        except ValueError:
-            raise EpochError(f"Epochs must be an integer, got '{args[1]}'")
-
-        if not os.path.exists(args[2]):
-            raise PathError(f"New dataset path does not exist: {args[2]}")
-
-        model_path = f"weight_saves/{args[0]}.h5"
-        if not os.path.exists(model_path):
-            raise PathError(f"Model not found: {model_path}. Train the model first.")
-
     if len(flags) > 1:
         for flag in flags[1:]:
             if flag not in ['--graph', '-g']:
                 raise ValidationError(f"Unexpected flag: {flag}. Only --graph/-g can be used with other flags")
 
-            if main_flag not in ['--load', '-l', '--train', '-t', '--simple-train', '-s', '--fine-tune', '-f']:
-                raise ValidationError(
-                    "--graph flag can only be used with --load, --train, --simple-train or --fine-tune")
+            if main_flag not in ['--load', '-l', '--train', '-t', '--simple-train', '-s']:
+                raise ValidationError("--graph flag can only be used with --load or --train")
 
     # Проверка конфликтов флагов
     flag_set = set(flags)
     conflicting_combinations = [
         {'--load', '--train'}, {'-l', '-t'}, {'-l', '--train'}, {'--load', '-t'},
         {'--load', '--simple-train'}, {'-l', '-s'}, {'--train', '--simple-train'},
-        {'-t', '-s'}, {'--load', '--fine-tune'}, {'-l', '-f'}, {'--train', '--fine-tune'},
-        {'-t', '-f'}, {'--simple-train', '--fine-tune'}, {'-s', '-f'},
-        {'--show-loss', '--load'}, {'-sl', '-l'}, {'--show-loss', '--train'},
-        {'-sl', '-t'}, {'--show-loss', '--simple-train'}, {'-sl', '-s'},
-        {'--show-loss', '--fine-tune'}, {'-sl', '-f'}
+        {'-t', '-s'}
     ]
 
     for combo in conflicting_combinations:
         if combo.issubset(flag_set):
-            raise IncorrectCommand(f"Cannot use {combo} together. Choose only one main operation.")
+            raise IncorrectCommand(f"Cannot use {combo} together. Choose either loading or training.")
 
 def sredpix(a):
     """
@@ -476,17 +420,15 @@ def show_help_info():
     print('Available arguments:')
     print('--load or -l: loading model, example: python3 ImageNN.py --load <model_name> <images_to_recognize_path>')
     print()
-    print('--graph or -g: show loss graph, can be use with any function, example: python3 ImageNN.py -l --graph "<model_name>"')
+    print('--graph or -g: show loss graph, example: python3 ImageNN.py -l --graph "<model_name>"')
     print()
-    print('--train or -t: train model with config, example: python3 ImageNN.py --train <model_name> <config_file> <train_dataset_path>')
+    print(
+        '--train or -t: train model with config, example: python3 ImageNN.py --train <model_name> <config_file> <train_dataset_path>')
     print()
-    print('--simple-train or -s: train with default architecture (backward compatibility), example: python3 ImageNN.py --simple-train <model_name> <epochs> <train_dataset_path>')
-    print()
-    print('--fine or -f: fine existing model, example: python3 ImageNN.py --fine <model_name> <additional_epochs> <new_dataset_path>')
+    print(
+        '--simple-train or -s: train with default architecture (backward compatibility), example: python3 ImageNN.py --simple-train <model_name> <epochs> <train_dataset_path>')
     print()
     print('--create-config or -c: create config template, example: python3 ImageNN.py --create-config <config_name>')
-    print()
-    print('--show-loss or -sl: show loss graph after loading/training, example: python3 ImageNN.py -s "<model_name>"')
 
 def load_examples(path, purpose = 0):
     """
@@ -550,7 +492,7 @@ inpargs = sys.argv[1:]
 flags = []
 args = []
 if len(inpargs) < 1:
-    raise ArgumentError("You need to use at least one argument. Use --help for more info.")
+    raise ArgumentError("You need to use at least one argument.")
 else:
     show_logo()
     for a in inpargs:
@@ -558,6 +500,42 @@ else:
             flags.append(a)
         else: args.append(a)
     validate_arguments(flags, args)
+    # if '--load' in flags or '-l' in flags:
+    #     tools.load_model_h5(nn, "weight_saves/" + args[0] + ".h5")
+    #     if '--graph' in flags or '-g' in flags:
+    #         tools.show_loss_save("loss_saves/" + args[0] + ".txt")
+    #
+    #     ds = load_examples(args[1])
+    #     for i in range(len(ds)):
+    #         print('#---------------------------#')
+    #         nn.run(ds[i])
+    #         ansnn = nn.get_best_index()
+    #         print(f'Test number {i + 1}')
+    #         print("Answer: ", ansnn)
+    #
+    # elif '--train' in flags or '-t' in flags:
+    #     z = args[0]
+    #     DATA_FILE_NAME = "weight_saves/" + z + ".h5"
+    #     LOSS_FILE_NAME = "loss_saves/" + z + ".txt"
+    #     ep = int(args[1])
+    #     total_loss_statistics = []
+    #     train_data = load_examples(args[2], 1)
+    #     for i in range(ep):
+    #         print('EPOCH #{}'.format(i+1))
+    #         print(len(train_data))
+    #         loss_total = nn.train(train_data, 0.1)
+    #         print('LOSS: {:.4f}'.format(loss_total))
+    #         total_loss_statistics.append(loss_total)
+    #
+    #     tools.save_model_h5(nn, DATA_FILE_NAME)
+    #     f = open(LOSS_FILE_NAME, 'w')
+    #     for s in total_loss_statistics:
+    #         f.write(str(s) + '\n')
+    #     f.close()
+    #
+    # elif '--help' in flags or '-h' in flags:
+    #     show_help_info()
+    # else: raise IncorrectCommand("Arguments are incorrect")
     if '--load' in flags or '-l' in flags:
         model_name = args[0]
         images_path = args[1]
@@ -579,9 +557,7 @@ else:
         tools.load_model_h5(nn, "weight_saves/" + model_name + ".h5")
 
         if '--graph' in flags or '-g' in flags:
-            try:
-                tools.show_loss_save("loss_saves/" + model_name + ".txt")
-            except Exception as e: raise ValidationError(f"Ошибка при чтении данных из файла {loss_file}: {e}")
+            tools.show_loss_save("loss_saves/" + model_name + ".txt")
 
         ds = load_examples(images_path, 0)
         for i in range(len(ds[0])):
@@ -673,26 +649,12 @@ else:
 
         save_config_to_file(std_config, f"configs/{z}.config")
 
-    elif '--fine' in flags or '-f' in flags:
-        model_name = args[0]
-        additional_epochs = int(args[1])
-        new_data_path = args[2]
-        learning_rate = 0.01
-
-        nn = fine_model(model_name, new_data_path, additional_epochs, learning_rate)
-
-        if '--graph' in flags or '-g' in flags:
-            tools.show_loss_save("loss_saves/" + model_name + ".txt")
-
     elif '--create-config' in flags or '-c' in flags:
         config_name = args[0]
         create_config_template(config_name)
 
     elif '--help' in flags or '-h' in flags:
         show_help_info()
-
-    elif '--show-loss' in flags or '-sl' in flags:
-        show_loss_graph_only(args[0])
 
     else:
         raise IncorrectCommand("Arguments are incorrect")

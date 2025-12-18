@@ -85,7 +85,7 @@ class Neuron:
         """
 
         if not(isinstance(input, int) or isinstance(input, float)):
-            raise TypeError(f"Input {input} must be of type float")
+            raise TypeError(f"Input {input} must be of type float or int")
 
         self.input = input
 
