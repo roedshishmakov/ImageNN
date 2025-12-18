@@ -32,7 +32,7 @@
       
       <div class="navlinks">
         <span class="navbar-brand">
-          ImageNN <a href="index.html">API Documentation</a>
+          default_train/tools/test_main/test_ImageNN/main/test_activations/test_tools/exceptions/activations/ImageNN <a href="index.html">API Documentation</a>
         </span>
 
         <a href="moduleIndex.html">
@@ -290,7 +290,37 @@
         
 
         
+            <div class="itemName"><code><a href="#neuron_class" class="internal-link" title="main.Layer.neuron_class">neuron<wbr></wbr>_class</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
             <div class="itemName"><code><a href="#neurons" class="internal-link" title="main.Layer.neurons">neurons</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#size" class="internal-link" title="main.Layer.size">size</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#use_bias" class="internal-link" title="main.Layer.use_bias">use<wbr></wbr>_bias</a></code>
             </div>
         
 
@@ -446,9 +476,7 @@
         </div>
 
         <div class="moduleDocstring">
-          <div><p>Класс слоя</p>
-<p>:ivar neuron_class: тип нейронов в уровне :type neuron_class: Neuron :ivar size: количество нейронов в классе :type size: int :ivar activation_class: тип активационной функции нейронов :type activation_class: ActivationBase :ivar use_bias: ипользование нейрона смещения :type use_bias: bool</p>
-</div>
+          <div><p>Класс слоя</p></div>
         </div>
 
         <div id="split-tables">
@@ -524,7 +552,7 @@
     
     <td>Instance Variable</td>
     <td><code><a href="#activation_class" class="internal-link" title="main.Layer.activation_class">activation<wbr></wbr>_class</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
+    <td>тип активационной функции нейронов</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
@@ -533,8 +561,23 @@
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
+    <td><code><a href="#neuron_class" class="internal-link" title="main.Layer.neuron_class">neuron<wbr></wbr>_class</a></code></td>
+    <td>тип нейронов в уровне</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
     <td><code><a href="#neurons" class="internal-link" title="main.Layer.neurons">neurons</a></code></td>
     <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#size" class="internal-link" title="main.Layer.size">size</a></code></td>
+    <td>количество нейронов в классе</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#use_bias" class="internal-link" title="main.Layer.use_bias">use<wbr></wbr>_bias</a></code></td>
+    <td>ипользование нейрона смещения</td>
   </tr>
 </table>
           
@@ -565,9 +608,7 @@
   </div>
   <div class="docstring functionBody">
     <div class="interfaceinfo">overridden in <code><a href="main.LayerSoftmax.html" class="internal-link">main.LayerSoftmax</a></code></div>
-    <div><p>Конструктор класса</p>
-<p>:param neuron_class: тип нейронов в уровне :type neuron_class: Neuron :param size: количество нейронов в классе :type size: int :param activation_class: тип активационной функции нейронов :type activation_class: ActivationBase :param use_bias: ипользование нейрона смещения :type use_bias: bool</p>
-</div>
+    <div><p>Конструктор класса</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">neuron<wbr></wbr>_class:</span>Neuron</td><td class="fieldArgDesc">тип нейронов в уровне</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">size:</span>int</td><td class="fieldArgDesc">количество нейронов в классе</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">activation<wbr></wbr>_class:</span>ActivationBase</td><td class="fieldArgDesc">тип активационной функции нейронов</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">use<wbr></wbr>_bias:</span>bool</td><td class="fieldArgDesc">ипользование нейрона смещения</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -591,9 +632,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Метод нахождения размера слоя</p>
-<p>:return: число нейронов в слое :rtype: int</p>
-</div>
+    <div><p>Метод нахождения размера слоя</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">int</td><td class="fieldArgDesc">число нейронов в слое</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -617,9 +656,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Служебный метод вывода данных слоя</p>
-<p>:return: строка с данными слоя :rtype: str</p>
-</div>
+    <div><p>Служебный метод вывода данных слоя</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">str</td><td class="fieldArgDesc">строка с данными слоя</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -643,9 +680,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Метод преобразования в строку</p>
-<p>:return: строка со значениями нейронов :rtype: str</p>
-</div>
+    <div><p>Метод преобразования в строку</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">str</td><td class="fieldArgDesc">строка со значениями нейронов</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -693,9 +728,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Расчет обратного распространения ошибки на уровне скрытого слоя</p>
-<p>:param speed: скорость обучения :type speed: float</p>
-</div>
+    <div><p>Расчет обратного распространения ошибки на уровне скрытого слоя</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">speed:</span>float</td><td class="fieldArgDesc">скорость обучения</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -719,9 +752,7 @@
   </div>
   <div class="docstring functionBody">
     <div class="interfaceinfo">overridden in <code><a href="main.LayerSoftmax.html" class="internal-link">main.LayerSoftmax</a></code></div>
-    <div><p>Расчет обратного распространения ошибки на уровне выходного слоя</p>
-<p>:param refs: референсы :type refs: list :param speed: скорость обучения :type speed: float</p>
-</div>
+    <div><p>Расчет обратного распространения ошибки на уровне выходного слоя</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">refs:</span>list</td><td class="fieldArgDesc">референсы</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">speed:</span>float</td><td class="fieldArgDesc">скорость обучения</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -769,7 +800,9 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Экспорт данных с каждого нейрона :return: данные для сохранения :rtype: list</p></div>
+    <div><p>Экспорт данных с каждого нейрона
+:return: данные для сохранения
+:rtype: list</p></div>
   </div>
 </div><div class="basemethod">
   
@@ -793,9 +826,7 @@
   </div>
   <div class="docstring functionBody">
     <div class="interfaceinfo">overridden in <code><a href="main.LayerSoftmax.html" class="internal-link">main.LayerSoftmax</a></code></div>
-    <div><p>Подсчет потерь каждого нейрона</p>
-<p>:param refs: референсы :type refs: list :return: потери :rtype: float</p>
-</div>
+    <div><p>Подсчет потерь каждого нейрона</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">refs:</span>list</td><td class="fieldArgDesc">референсы</td></tr></table><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">float</td><td class="fieldArgDesc">потери</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -819,9 +850,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Импорт данных в каждый нейрон</p>
-<p>:param neurons_data: сохраненные данные :type neurons_data: list</p>
-</div>
+    <div><p>Импорт данных в каждый нейрон</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">neurons<wbr></wbr>_data:</span>list</td><td class="fieldArgDesc">сохраненные данные</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -845,9 +874,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Сброс входов всех нейронов</p>
-<p>:param input: данные на вход :type input: list</p>
-</div>
+    <div><p>Сброс входов всех нейронов</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">input:</span>list</td><td class="fieldArgDesc">данные на вход</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -884,7 +911,7 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">activation_class</span> =
+    <span class="py-defname">activation_class</span>: ActivationBase =
     
     <a class="headerLink" href="#activation_class" title="main.Layer.activation_class">
       
@@ -894,7 +921,7 @@
   </div>
   <div class="functionBody">
     <div class="interfaceinfo">overridden in <code><a href="main.LayerSoftmax.html" class="internal-link">main.LayerSoftmax</a></code></div>
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>тип активационной функции нейронов</p></div>
     
   </div>
 </div><div class="baseinstancevariable">
@@ -924,6 +951,30 @@
 </div><div class="baseinstancevariable">
   
   
+  <a name="main.Layer.neuron_class">
+    
+  </a>
+  <a name="neuron_class">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">neuron_class</span>: Neuron =
+    
+    <a class="headerLink" href="#neuron_class" title="main.Layer.neuron_class">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>тип нейронов в уровне</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
   <a name="main.Layer.neurons">
     
   </a>
@@ -945,6 +996,54 @@
     <div><p class="undocumented">Undocumented</p></div>
     
   </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Layer.size">
+    
+  </a>
+  <a name="size">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">size</span>: int =
+    
+    <a class="headerLink" href="#size" title="main.Layer.size">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>количество нейронов в классе</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Layer.use_bias">
+    
+  </a>
+  <a name="use_bias">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">use_bias</span>: bool =
+    
+    <a class="headerLink" href="#use_bias" title="main.Layer.use_bias">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>ипользование нейрона смещения</p></div>
+    
+  </div>
 </div>
         </div>
       
@@ -955,9 +1054,9 @@
 
   
   <div class="container-fluid">
-    <a href="index.html">API Documentation</a> for ImageNN,
+    <a href="index.html">API Documentation</a> for default_train/tools/test_main/test_ImageNN/main/test_activations/test_tools/exceptions/activations/ImageNN,
   generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-    25.10.1 at 2025-12-18 09:23:52.
+    25.10.1 at 2025-12-18 13:25:21.
   </div>
 
   <!-- Search related scripts needs to be loaded at the end of HTML 

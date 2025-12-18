@@ -32,7 +32,7 @@
       
       <div class="navlinks">
         <span class="navbar-brand">
-          ImageNN <a href="index.html">API Documentation</a>
+          default_train/tools/test_main/test_ImageNN/main/test_activations/test_tools/exceptions/activations/ImageNN <a href="index.html">API Documentation</a>
         </span>
 
         <a href="moduleIndex.html">
@@ -161,6 +161,16 @@
         
 
         
+            <div class="itemName"><code><a href="#fine_model" class="internal-link" title="ImageNN.fine_model">fine<wbr></wbr>_model</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
             <div class="itemName"><code><a href="#load_examples" class="internal-link" title="ImageNN.load_examples">load<wbr></wbr>_examples</a></code>
             </div>
         
@@ -211,6 +221,16 @@
         
 
         
+            <div class="itemName"><code><a href="#show_loss_graph_only" class="internal-link" title="ImageNN.show_loss_graph_only">show<wbr></wbr>_loss<wbr></wbr>_graph<wbr></wbr>_only</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
             <div class="itemName"><code><a href="#sredpix" class="internal-link" title="ImageNN.sredpix">sredpix</a></code>
             </div>
         
@@ -235,6 +255,16 @@
         <ul>
     
     <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#additional_epochs" class="internal-link" title="ImageNN.additional_epochs">additional<wbr></wbr>_epochs</a></code>
+            </div>
+        
+
+    </li><li class="">
         
         
         
@@ -410,6 +440,16 @@
         
 
         
+            <div class="itemName"><code><a href="#new_data_path" class="internal-link" title="ImageNN.new_data_path">new<wbr></wbr>_data<wbr></wbr>_path</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
             <div class="itemName"><code><a href="#nn" class="internal-link" title="ImageNN.nn">nn</a></code>
             </div>
         
@@ -549,6 +589,11 @@
   </tr><tr class="function">
     
     <td>Function</td>
+    <td><code><a href="#fine_model" class="internal-link" title="ImageNN.fine_model">fine<wbr></wbr>_model</a></code></td>
+    <td>Функция дообучения существующей модели на новом датасете</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
     <td><code><a href="#load_examples" class="internal-link" title="ImageNN.load_examples">load<wbr></wbr>_examples</a></code></td>
     <td>Функция загрузки своего датасета</td>
   </tr><tr class="function">
@@ -574,6 +619,11 @@
   </tr><tr class="function">
     
     <td>Function</td>
+    <td><code><a href="#show_loss_graph_only" class="internal-link" title="ImageNN.show_loss_graph_only">show<wbr></wbr>_loss<wbr></wbr>_graph<wbr></wbr>_only</a></code></td>
+    <td>Функция отображения графика потерь без загрузки модели</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
     <td><code><a href="#sredpix" class="internal-link" title="ImageNN.sredpix">sredpix</a></code></td>
     <td>Функция нахождения среднего значения пикселя</td>
   </tr><tr class="function">
@@ -581,6 +631,11 @@
     <td>Function</td>
     <td><code><a href="#validate_arguments" class="internal-link" title="ImageNN.validate_arguments">validate<wbr></wbr>_arguments</a></code></td>
     <td>Функция проверки корректности входных аргументов команды</td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><code><a href="#additional_epochs" class="internal-link" title="ImageNN.additional_epochs">additional<wbr></wbr>_epochs</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
   </tr><tr class="variable">
     
     <td>Variable</td>
@@ -669,6 +724,11 @@
   </tr><tr class="variable">
     
     <td>Variable</td>
+    <td><code><a href="#new_data_path" class="internal-link" title="ImageNN.new_data_path">new<wbr></wbr>_data<wbr></wbr>_path</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
     <td><code><a href="#nn" class="internal-link" title="ImageNN.nn">nn</a></code></td>
     <td><span class="rst-undocumented">Undocumented</span></td>
   </tr><tr class="variable">
@@ -736,7 +796,9 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Создает шаблон конфигурационного файла для нейронной сети :param config_name: Название конфиг файла :type config_name: str</p></div>
+    <div><p>Создает шаблон конфигурационного файла для нейронной сети
+:param config_name: Название конфиг файла
+:type config_name: str</p></div>
   </div>
 </div><div class="basefunction">
   
@@ -760,9 +822,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Создает нейронную сеть на основе конфигурации</p>
-<p>:param config: конфиг файл :type config: dict :return: нейросеть :rtype: NeuralNetwork</p>
-</div>
+    <div><p>Создает нейронную сеть на основе конфигурации</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">config:</span>dict</td><td class="fieldArgDesc">конфиг файл</td></tr></table><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">NeuralNetwork</td><td class="fieldArgDesc">нейросеть</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -791,6 +851,30 @@
 </div><div class="basefunction">
   
   
+  <a name="ImageNN.fine_model">
+    
+  </a>
+  <a name="fine_model">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">fine_model</span><span class="function-signature">(<span class="rst-sig-param">model_name, </span><span class="rst-sig-param">new_data_path, </span><span class="rst-sig-param">additional_epochs=5, </span><span class="rst-sig-param">learning_rate=0.01</span>):</span>
+    
+    <a class="headerLink" href="#fine_model" title="ImageNN.fine_model">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Функция дообучения существующей модели на новом датасете</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">model<wbr></wbr>_name:</span>str</td><td class="fieldArgDesc">имя модели для дообучения</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">new<wbr></wbr>_data<wbr></wbr>_path:</span>str</td><td class="fieldArgDesc">путь к новому датасету</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">additional<wbr></wbr>_epochs:</span>int</td><td class="fieldArgDesc">количество дополнительных эпох обучения</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">learning<wbr></wbr>_rate:</span>float</td><td class="fieldArgDesc">скорость обучения для дообучения</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
   <a name="ImageNN.load_examples">
     
   </a>
@@ -810,9 +894,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Функция загрузки своего датасета</p>
-<p>:param path: путь до папки :type path: str :param purpose: цель использования датасета(0 - :type purpose: int :return: список с преобразованными данными из фото и правильными ответами :rtype: list</p>
-</div>
+    <div><p>Функция загрузки своего датасета</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">path:</span>str</td><td class="fieldArgDesc">путь до папки</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">purpose:</span>int</td><td class="fieldArgDesc">цель использования датасета(0 -</td></tr></table><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">list</td><td class="fieldArgDesc">список с преобразованными данными из фото и правильными ответами</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -836,7 +918,8 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Парсит конфигурационный файл Возвращает словарь с параметрами сети</p></div>
+    <div><p>Парсит конфигурационный файл
+Возвращает словарь с параметрами сети</p></div>
   </div>
 </div><div class="basefunction">
   
@@ -860,9 +943,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Сохраняет конфигурацию в текстовый файл</p>
-<p>:param config: Конфиг :type config: dict :param filename: название файла сохранения :type filename: str</p>
-</div>
+    <div><p>Сохраняет конфигурацию в текстовый файл</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">config:</span>dict</td><td class="fieldArgDesc">Конфиг</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">filename:</span>str</td><td class="fieldArgDesc">название файла сохранения</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -915,6 +996,30 @@
 </div><div class="basefunction">
   
   
+  <a name="ImageNN.show_loss_graph_only">
+    
+  </a>
+  <a name="show_loss_graph_only">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">show_loss_graph_only</span><span class="function-signature">(<span class="rst-sig-param">model_name</span>):</span>
+    
+    <a class="headerLink" href="#show_loss_graph_only" title="ImageNN.show_loss_graph_only">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Функция отображения графика потерь без загрузки модели</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">model<wbr></wbr>_name:</span>str</td><td class="fieldArgDesc">имя модели для отображения графика</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  
   <a name="ImageNN.sredpix">
     
   </a>
@@ -934,9 +1039,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Функция нахождения среднего значения пикселя</p>
-<p>:param a: список с параметрами пикселя :type a: list :return: среднее значение параметров :rtype: float</p>
-</div>
+    <div><p>Функция нахождения среднего значения пикселя</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">a:</span>list</td><td class="fieldArgDesc">список с параметрами пикселя</td></tr></table><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">float</td><td class="fieldArgDesc">среднее значение параметров</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -961,6 +1064,30 @@
   <div class="docstring functionBody">
     
     <div><p>Функция проверки корректности входных аргументов команды</p></div>
+  </div>
+</div><div class="basevariable">
+  
+  
+  <a name="ImageNN.additional_epochs">
+    
+  </a>
+  <a name="additional_epochs">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">additional_epochs</span> =
+    
+    <a class="headerLink" href="#additional_epochs" title="ImageNN.additional_epochs">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
   </div>
 </div><div class="basevariable">
   
@@ -1373,6 +1500,30 @@
 </div><div class="basevariable">
   
   
+  <a name="ImageNN.new_data_path">
+    
+  </a>
+  <a name="new_data_path">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">new_data_path</span> =
+    
+    <a class="headerLink" href="#new_data_path" title="ImageNN.new_data_path">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="basevariable">
+  
+  
   <a name="ImageNN.nn">
     
   </a>
@@ -1572,9 +1723,9 @@
 
   
   <div class="container-fluid">
-    <a href="index.html">API Documentation</a> for ImageNN,
+    <a href="index.html">API Documentation</a> for default_train/tools/test_main/test_ImageNN/main/test_activations/test_tools/exceptions/activations/ImageNN,
   generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-    25.10.1 at 2025-12-18 09:23:52.
+    25.10.1 at 2025-12-18 13:25:21.
   </div>
 
   <!-- Search related scripts needs to be loaded at the end of HTML 

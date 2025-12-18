@@ -32,7 +32,7 @@
       
       <div class="navlinks">
         <span class="navbar-brand">
-          ImageNN <a href="index.html">API Documentation</a>
+          default_train/tools/test_main/test_ImageNN/main/test_activations/test_tools/exceptions/activations/ImageNN <a href="index.html">API Documentation</a>
         </span>
 
         <a href="moduleIndex.html">
@@ -496,9 +496,7 @@
         </div>
 
         <div class="moduleDocstring">
-          <div><p>Класс нейрона</p>
-<p>:ivar activation_class: класс активационной функции :type activation_class: ActivationBase :ivar input: вход нейрона :type input: float :ivar output: выход нейрона :type output: float :ivar link_input: список линков на вход :type link_input: list :ivar link_output: список линков на выход :type link_output: list</p>
-</div>
+          <div><p>Класс нейрона</p></div>
         </div>
 
         <div id="split-tables">
@@ -589,27 +587,27 @@
     
     <td>Instance Variable</td>
     <td><code><a href="#activation_class" class="internal-link" title="main.Neuron.activation_class">activation<wbr></wbr>_class</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
+    <td>класс активационной функции</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><code><a href="#input" class="internal-link" title="main.Neuron.input">input</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
+    <td>вход нейрона</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><code><a href="#link_input" class="internal-link" title="main.Neuron.link_input">link<wbr></wbr>_input</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
+    <td>список линков на вход</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><code><a href="#link_output" class="internal-link" title="main.Neuron.link_output">link<wbr></wbr>_output</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
+    <td>список линков на выход</td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><code><a href="#output" class="internal-link" title="main.Neuron.output">output</a></code></td>
-    <td><span class="rst-undocumented">Undocumented</span></td>
+    <td>выход нейрона</td>
   </tr>
 </table>
           
@@ -640,9 +638,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Метод поиска потерь</p>
-<p>:param output: выходное значение :type output: float :param ref: референс :type ref: float :return: потеря :rtype: float</p>
-</div>
+    <div><p>Метод поиска потерь</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">output:</span>float</td><td class="fieldArgDesc">выходное значение</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">ref:</span>float</td><td class="fieldArgDesc">референс</td></tr></table><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">float</td><td class="fieldArgDesc">потеря</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -666,9 +662,7 @@
   </div>
   <div class="docstring functionBody">
     <div class="interfaceinfo">overridden in <code><a href="main.BiasNeuron.html" class="internal-link">main.BiasNeuron</a></code>, <code><a href="main.NeuronSoftmax.html" class="internal-link">main.NeuronSoftmax</a></code></div>
-    <div><p>Конструктор класса</p>
-<p>:param activation_class:  Активационная функция :type activation_class: ActivationBase</p>
-</div>
+    <div><p>Конструктор класса</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">activation<wbr></wbr>_class:</span>ActivationBase</td><td class="fieldArgDesc">Активационная функция</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -692,9 +686,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Служебный метод вывода значения</p>
-<p>:return: строка со значениями входа и выхода :rtype: str</p>
-</div>
+    <div><p>Служебный метод вывода значения</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">str</td><td class="fieldArgDesc">строка со значениями входа и выхода</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -742,9 +734,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Подача сигнала на вход нейрона</p>
-<p>:param signal: подаваемый сигнал</p>
-</div>
+    <div><p>Подача сигнала на вход нейрона</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">signal</span></td><td class="fieldArgDesc">подаваемый сигнал</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -768,9 +758,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Добавление линка на вход</p>
-<p>:param link: добавляемый линк :type link: Link :raises TypeError: при добавлении в список линков не линка</p>
-</div>
+    <div><p>Добавление линка на вход</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">link:</span>Link</td><td class="fieldArgDesc">добавляемый линк</td></tr></table><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>TypeError</code></td><td>при добавлении в список линков не линка</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -794,9 +782,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Добавление линка на выход</p>
-<p>:param link: добавляемый линк :type link: Link :raises TypeError: при добавлении не линка в список выходных линков</p>
-</div>
+    <div><p>Добавление линка на выход</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">link:</span>Link</td><td class="fieldArgDesc">добавляемый линк</td></tr></table><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code>TypeError</code></td><td>при добавлении не линка в список выходных линков</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -844,9 +830,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Алгоритм обратного распространения ошибки для скрытых уровней</p>
-<p>:param speed: скорость обучения :type speed: float</p>
-</div>
+    <div><p>Алгоритм обратного распространения ошибки для скрытых уровней</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">speed:</span>float</td><td class="fieldArgDesc">скорость обучения</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -870,9 +854,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Алгоритм обратного распространения ошибки для выходного уровня</p>
-<p>:param ref: тренировочный пример :type ref: float :param speed: скорость обучения :type speed: float</p>
-</div>
+    <div><p>Алгоритм обратного распространения ошибки для выходного уровня</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">ref:</span>float</td><td class="fieldArgDesc">тренировочный пример</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">speed:</span>float</td><td class="fieldArgDesc">скорость обучения</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -896,9 +878,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Экспорт данных</p>
-<p>:return: список линков :rtype: list[Link]</p>
-</div>
+    <div><p>Экспорт данных</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">list[Link]</td><td class="fieldArgDesc">список линков</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -922,9 +902,7 @@
   </div>
   <div class="docstring functionBody">
     <div class="interfaceinfo">overridden in <code><a href="main.NeuronSoftmax.html" class="internal-link">main.NeuronSoftmax</a></code></div>
-    <div><p>Выполняет активационную функцию нейрона</p>
-<p>:param x: вход :type x: float :return: результат активации :rtype: float</p>
-</div>
+    <div><p>Выполняет активационную функцию нейрона</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">x:</span>float</td><td class="fieldArgDesc">вход</td></tr></table><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">float</td><td class="fieldArgDesc">результат активации</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -948,9 +926,7 @@
   </div>
   <div class="docstring functionBody">
     <div class="interfaceinfo">overridden in <code><a href="main.NeuronSoftmax.html" class="internal-link">main.NeuronSoftmax</a></code></div>
-    <div><p>Метод получения производной функции активации</p>
-<p>:param x: значение на вход функции :type x: float :return: выход с функции производной :rtype: float</p>
-</div>
+    <div><p>Метод получения производной функции активации</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">x:</span>float</td><td class="fieldArgDesc">значение на вход функции</td></tr></table><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer">float</td><td class="fieldArgDesc">выход с функции производной</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -974,9 +950,7 @@
   </div>
   <div class="docstring functionBody">
     
-    <div><p>Импорт сохраненных данных</p>
-<p>:param links_data: данные линков :type links_data: list[Link]</p>
-</div>
+    <div><p>Импорт сохраненных данных</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">links<wbr></wbr>_data:</span>list[Link]</td><td class="fieldArgDesc">данные линков</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -1000,9 +974,7 @@
   </div>
   <div class="docstring functionBody">
     <div class="interfaceinfo">overridden in <code><a href="main.BiasNeuron.html" class="internal-link">main.BiasNeuron</a></code></div>
-    <div><p>Сброс входа нейрона</p>
-<p>:param input: новый вход, по умолчанию None :type input: int</p>
-</div>
+    <div><p>Сброс входа нейрона</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">input:</span>int</td><td class="fieldArgDesc">новый вход, по умолчанию None</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -1039,7 +1011,7 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">activation_class</span> =
+    <span class="py-defname">activation_class</span>: ActivationBase =
     
     <a class="headerLink" href="#activation_class" title="main.Neuron.activation_class">
       
@@ -1049,7 +1021,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>класс активационной функции</p></div>
     
   </div>
 </div><div class="baseinstancevariable">
@@ -1063,7 +1035,7 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">input</span> =
+    <span class="py-defname">input</span>: float =
     
     <a class="headerLink" href="#input" title="main.Neuron.input">
       
@@ -1073,7 +1045,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>вход нейрона</p></div>
     
   </div>
 </div><div class="baseinstancevariable">
@@ -1087,7 +1059,7 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">link_input</span>: <code>list</code> =
+    <span class="py-defname">link_input</span>: list =
     
     <a class="headerLink" href="#link_input" title="main.Neuron.link_input">
       
@@ -1097,7 +1069,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>список линков на вход</p></div>
     
   </div>
 </div><div class="baseinstancevariable">
@@ -1111,7 +1083,7 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">link_output</span>: <code>list</code> =
+    <span class="py-defname">link_output</span>: list =
     
     <a class="headerLink" href="#link_output" title="main.Neuron.link_output">
       
@@ -1121,7 +1093,7 @@
   </div>
   <div class="functionBody">
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>список линков на выход</p></div>
     
   </div>
 </div><div class="baseinstancevariable">
@@ -1135,7 +1107,7 @@
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">output</span> =
+    <span class="py-defname">output</span>: float =
     
     <a class="headerLink" href="#output" title="main.Neuron.output">
       
@@ -1145,7 +1117,7 @@
   </div>
   <div class="functionBody">
     <div class="interfaceinfo">overridden in <code><a href="main.BiasNeuron.html" class="internal-link">main.BiasNeuron</a></code>, <code><a href="main.NeuronSoftmax.html" class="internal-link">main.NeuronSoftmax</a></code>, <code><a href="main.TransparentNeuron.html" class="internal-link">main.TransparentNeuron</a></code></div>
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p>выход нейрона</p></div>
     
   </div>
 </div>
@@ -1158,9 +1130,9 @@
 
   
   <div class="container-fluid">
-    <a href="index.html">API Documentation</a> for ImageNN,
+    <a href="index.html">API Documentation</a> for default_train/tools/test_main/test_ImageNN/main/test_activations/test_tools/exceptions/activations/ImageNN,
   generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
-    25.10.1 at 2025-12-18 09:23:52.
+    25.10.1 at 2025-12-18 13:25:21.
   </div>
 
   <!-- Search related scripts needs to be loaded at the end of HTML 
