@@ -444,8 +444,11 @@ def load_examples(path, purpose = 0):
 
     names = os.listdir(path)
     dataset = []
+    names = sorted(names, key = lambda x: x[0])
+    namess = []
     if purpose == 0:
         for name in names:
+            namess.append(name)
             name = path + '/' + name
             if ('.png' in str(name)) or ('.jpg' in str(name)):
                 arr = []
@@ -462,7 +465,7 @@ def load_examples(path, purpose = 0):
 
                 arr = tools.flat(arr)
                 dataset.append(arr)
-        return dataset
+        return [dataset, namess]
     elif purpose == 1:
         for name in names:
             o = [0.0]*10
@@ -547,21 +550,21 @@ else:
             except Exception as e:
                 print(f"Ошибка загрузки конфигурации: {e}")
                 print("Используется стандартная архитектура")
-                create_standart_nn()
+                nn = create_standart_nn()
         else:
             print("Используется стандартная архитектура")
-            create_standart_nn()
+            nn = create_standart_nn()
         tools.load_model_h5(nn, "weight_saves/" + model_name + ".h5")
 
         if '--graph' in flags or '-g' in flags:
             tools.show_loss_save("loss_saves/" + model_name + ".txt")
 
-        ds = load_examples(images_path)
-        for i in range(len(ds)):
+        ds = load_examples(images_path, 0)
+        for i in range(len(ds[0])):
             print('#---------------------------#')
-            nn.run(ds[i])
+            nn.run(ds[0][i])
             ansnn = nn.get_best_index()
-            print(f'Test number {i + 1}')
+            print(f'Test file: {ds[1][i]}')
             print("Answer: ", ansnn)
 
     elif '--train' in flags or '-t' in flags:
@@ -613,8 +616,7 @@ else:
         DATA_FILE_NAME = "weight_saves/" + z + ".h5"
         LOSS_FILE_NAME = "loss_saves/" + z + ".txt"
 
-        # Создаем стандартную сеть
-        create_standart_nn()
+        nn = create_standart_nn()
 
         total_loss_statistics = []
         train_data = load_examples(train_path, 1)
