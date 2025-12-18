@@ -4,7 +4,6 @@ import tools
 import activations
 
 import numpy as np
-import matplotlib.pyplot as plt
 
 from PIL import Image
 from main import *
@@ -456,14 +455,14 @@ def show_logo():
     Функция отображения логотипа программы
     """
 
-    s = ['+============================================+',
-         '| ___                            _   _ _   _ |',
-         '||_ _|_ __ ___   __ _  __ _  ___| \ | | \ | ||',
-         '| | || `_ ` _ \ / _` |/ _` |/ _ \  \| |  \| ||',
-         '| | || | | | | | (_| | (_| |  __/ |\  | |\  ||',
-         '||___|_| |_| |_|\__,_|\__, |\___|_| \_|_| \_||',
-         '|                     |___/                  |',
-         '+============================================+']
+    s = [r'+============================================+',
+         r'| ___                            _   _ _   _ |',
+         r'||_ _|_ __ ___   __ _  __ _  ___| \ | | \ | ||',
+         r'| | || `_ ` _ \ / _` |/ _` |/ _ \  \| |  \| ||',
+         r'| | || | | | | | (_| | (_| |  __/ |\  | |\  ||',
+         r'||___|_| |_| |_|\__,_|\__, |\___|_| \_|_| \_||',
+         r'|                     |___/                  |',
+         r'+============================================+']
     for i in s:
         print(i)
     print()
@@ -581,7 +580,7 @@ else:
         if '--graph' in flags or '-g' in flags:
             try:
                 tools.show_loss_save("loss_saves/" + model_name + ".txt")
-            except Exception as e: raise ValidationError(f"Ошибка при чтении данных из файла {loss_file}: {e}")
+            except Exception as e: raise ValidationError(f"Ошибка при чтении данных из файла {model_name}: {e}")
 
         ds = load_examples(images_path, 0)
         for i in range(len(ds[0])):
