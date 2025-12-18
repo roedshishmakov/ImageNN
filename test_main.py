@@ -5,7 +5,6 @@ import activations as act
 
 from main import Neuron, Link, Layer, NeuralNetwork, LayerSoftmax, NeuronSoftmax
 
-#Neuron
 def test_neuron_initialization():
     neuron = Neuron(act.ActivationRelu)
     assert neuron.input == 0
@@ -125,7 +124,6 @@ def test_link_delta():
     assert link.weight == 1.2
     assert link.weight_delta == 0
 
-#Layer
 def test_layer_initialization():
     layer = Layer(Neuron, 3, act.ActivationRelu, use_bias=False)
     assert len(layer.neurons) == 3
@@ -168,8 +166,6 @@ def test_layer_get_loss():
     expected = 0.5 * ((1.0 - 0.5) ** 2 + (2.0 - 1.5) ** 2)
     assert loss == pytest.approx(expected, rel=1e-6)
 
-#Softmax layer
-
 def test_softmax_layer_initialization():
     layer = LayerSoftmax(3)
     assert len(layer.neurons) == 3
@@ -201,7 +197,6 @@ def test_softmax_layer_get_loss():
 
     assert loss == pytest.approx(-math.log(0.7), rel=1e-6)
 
-#NeuralNetwork
 def test_NN_initialization():
     nn = NeuralNetwork()
     assert nn.layers == []
@@ -233,7 +228,7 @@ def test_NN_run_negative():
     nn.add_input_layer(2)
 
     with pytest.raises(Exception) as e:
-        nn.run([1.0])  # Неправильный размер входа
+        nn.run([1.0])
     assert "IncorrectInput" in str(e.value)
 
 def test_NN_empty():

@@ -326,8 +326,8 @@ def validate_arguments(flags, args):
         '-s': 3,
         '--fine-tune': 3,
         '-f': 3,
-        '--show-loss': 1,  # Новая команда - показ графика без загрузки модели
-        '-sl': 1  # Сокращенная форма
+        '--show-loss': 1,
+        '-sl': 1
     }
 
     if not flags:
@@ -355,7 +355,7 @@ def validate_arguments(flags, args):
         elif main_flag in ['--fine-tune', '-f']:
             raise ArgumentError(
                 f"{main_flag} requires {required_count} arguments: model_name, additional_epochs, and new_dataset_path")
-        elif main_flag in ['--show-loss', '-sl']:  # Добавляем проверку для новой команды
+        elif main_flag in ['--show-loss', '-sl']:
             raise ArgumentError(f"{main_flag} requires {required_count} argument: model_name")
         else:
             raise ArgumentError(f"Insufficient arguments for {main_flag}")
@@ -399,7 +399,7 @@ def validate_arguments(flags, args):
             epochs = int(args[1])
             if epochs <= 0:
                 raise EpochError(f"Number of epochs must be positive, got {epochs}")
-            if epochs > 1000:  # Ограничиваем дообучение 1000 эпохами
+            if epochs > 1000:
                 raise EpochError(f"Number of epochs too high: {epochs}. Maximum for fine-tuning is 1000")
         except ValueError:
             raise EpochError(f"Epochs must be an integer, got '{args[1]}'")
@@ -420,7 +420,6 @@ def validate_arguments(flags, args):
                 raise ValidationError(
                     "--graph flag can only be used with --load, --train, --simple-train or --fine-tune")
 
-    # Проверка конфликтов флагов
     flag_set = set(flags)
     conflicting_combinations = [
         {'--load', '--train'}, {'-l', '-t'}, {'-l', '--train'}, {'--load', '-t'},
