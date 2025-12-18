@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>main.Layer</title>
+    <meta name="generator" content="pydoctor 25.10.1"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+    
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          ImageNN <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="apidocs-help-button" title="Help" href="apidocs-help.html"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 10px;">
+          <p>For more information on the search, visit the <a href="apidocs-help.html#rst-search">help page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="main.Layer.html" class="internal-link" title="This class"><wbr></wbr>Layer</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="main.Layer.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__len__" class="internal-link" title="main.Layer.__len__">__len__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__repr__" class="internal-link" title="main.Layer.__repr__">__repr__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__str__" class="internal-link" title="main.Layer.__str__">__str__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#back_propagation_apply" class="internal-link" title="main.Layer.back_propagation_apply">back<wbr></wbr>_propagation<wbr></wbr>_apply</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#back_propagation_hidden_l" class="internal-link" title="main.Layer.back_propagation_hidden_l">back<wbr></wbr>_propagation<wbr></wbr>_hidden<wbr></wbr>_l</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#back_propagation_output_l" class="internal-link" title="main.Layer.back_propagation_output_l">back<wbr></wbr>_propagation<wbr></wbr>_output<wbr></wbr>_l</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#calc" class="internal-link" title="main.Layer.calc">calc</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#export" class="internal-link" title="main.Layer.export">export</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_loss" class="internal-link" title="main.Layer.get_loss">get<wbr></wbr>_loss</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#import_" class="internal-link" title="main.Layer.import_">import_</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reset" class="internal-link" title="main.Layer.reset">reset</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#send" class="internal-link" title="main.Layer.send">send</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#activation_class" class="internal-link" title="main.Layer.activation_class">activation<wbr></wbr>_class</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#bias" class="internal-link" title="main.Layer.bias">bias</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#neurons" class="internal-link" title="main.Layer.neurons">neurons</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="main.html" class="internal-link" title="The parent of this class">main</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.BiasNeuron.html" class="internal-link" title="main.BiasNeuron"><wbr></wbr>Bias<wbr></wbr>Neuron</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.Layer.html" class="internal-link" title="main.Layer"><wbr></wbr>Layer</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.LayerSoftmax.html" class="internal-link" title="main.LayerSoftmax"><wbr></wbr>Layer<wbr></wbr>Softmax</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.Link.html" class="internal-link" title="main.Link"><wbr></wbr>Link</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.NeuralNetwork.html" class="internal-link" title="main.NeuralNetwork"><wbr></wbr>Neural<wbr></wbr>Network</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.Neuron.html" class="internal-link" title="main.Neuron"><wbr></wbr>Neuron</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.NeuronSoftmax.html" class="internal-link" title="main.NeuronSoftmax"><wbr></wbr>Neuron<wbr></wbr>Softmax</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.TransparentNeuron.html" class="internal-link" title="main.TransparentNeuron"><wbr></wbr>Transparent<wbr></wbr>Neuron</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapse-sidebar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <main class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="main.html" class="internal-link">main</a></code><wbr></wbr>.<code><a href="main.Layer.html" class="internal-link" title="main.Layer">Layer</a></code></code></h1>
+          <div id="show-private">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">Layer</span>:</code></p><p>Known subclasses: <code><a href="main.LayerSoftmax.html" class="internal-link">main.LayerSoftmax</a></code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="main.Layer.__init__">Layer(neuron_class, size, activation_class, use_bias)</a></code></p><p><a href="classIndex.html#main.Layer">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>Класс слоя</p>
+<p>:ivar neuron_class: тип нейронов в уровне :type neuron_class: Neuron :ivar size: количество нейронов в классе :type size: int :ivar activation_class: тип активационной функции нейронов :type activation_class: ActivationBase :ivar use_bias: ипользование нейрона смещения :type use_bias: bool</p>
+</div>
+        </div>
+
+        <div id="split-tables">
+          <table class="children sortable" id="id24">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="main.Layer.__init__">__init__</a></code></td>
+    <td>Конструктор класса</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__len__" class="internal-link" title="main.Layer.__len__">__len__</a></code></td>
+    <td>Метод нахождения размера слоя</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__repr__" class="internal-link" title="main.Layer.__repr__">__repr__</a></code></td>
+    <td>Служебный метод вывода данных слоя</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__str__" class="internal-link" title="main.Layer.__str__">__str__</a></code></td>
+    <td>Метод преобразования в строку</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#back_propagation_apply" class="internal-link" title="main.Layer.back_propagation_apply">back<wbr></wbr>_propagation<wbr></wbr>_apply</a></code></td>
+    <td>Применение обратного распространения ошибки</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#back_propagation_hidden_l" class="internal-link" title="main.Layer.back_propagation_hidden_l">back<wbr></wbr>_propagation<wbr></wbr>_hidden<wbr></wbr>_l</a></code></td>
+    <td>Расчет обратного распространения ошибки на уровне скрытого слоя</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#back_propagation_output_l" class="internal-link" title="main.Layer.back_propagation_output_l">back<wbr></wbr>_propagation<wbr></wbr>_output<wbr></wbr>_l</a></code></td>
+    <td>Расчет обратного распространения ошибки на уровне выходного слоя</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#calc" class="internal-link" title="main.Layer.calc">calc</a></code></td>
+    <td>Применение активационной функции каждого нейрона</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#export" class="internal-link" title="main.Layer.export">export</a></code></td>
+    <td>Экспорт данных с каждого нейрона :return: данные для сохранения :rtype: list</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_loss" class="internal-link" title="main.Layer.get_loss">get<wbr></wbr>_loss</a></code></td>
+    <td>Подсчет потерь каждого нейрона</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#import_" class="internal-link" title="main.Layer.import_">import_</a></code></td>
+    <td>Импорт данных в каждый нейрон</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reset" class="internal-link" title="main.Layer.reset">reset</a></code></td>
+    <td>Сброс входов всех нейронов</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#send" class="internal-link" title="main.Layer.send">send</a></code></td>
+    <td>Отправка данных со всех нейронов слоя</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#activation_class" class="internal-link" title="main.Layer.activation_class">activation<wbr></wbr>_class</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#bias" class="internal-link" title="main.Layer.bias">bias</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#neurons" class="internal-link" title="main.Layer.neurons">neurons</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="child-list">
+          <div class="basemethod">
+  
+  
+  <a name="main.Layer.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__init__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">neuron_class, </span><span class="rst-sig-param">size, </span><span class="rst-sig-param">activation_class, </span><span class="rst-sig-param">use_bias=False</span>):</span>
+    
+    <a class="headerLink" href="#__init__" title="main.Layer.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.LayerSoftmax.html" class="internal-link">main.LayerSoftmax</a></code></div>
+    <div><p>Конструктор класса</p>
+<p>:param neuron_class: тип нейронов в уровне :type neuron_class: Neuron :param size: количество нейронов в классе :type size: int :param activation_class: тип активационной функции нейронов :type activation_class: ActivationBase :param use_bias: ипользование нейрона смещения :type use_bias: bool</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.__len__">
+    
+  </a>
+  <a name="__len__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__len__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#__len__" title="main.Layer.__len__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Метод нахождения размера слоя</p>
+<p>:return: число нейронов в слое :rtype: int</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.__repr__">
+    
+  </a>
+  <a name="__repr__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__repr__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#__repr__" title="main.Layer.__repr__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Служебный метод вывода данных слоя</p>
+<p>:return: строка с данными слоя :rtype: str</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.__str__">
+    
+  </a>
+  <a name="__str__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__str__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#__str__" title="main.Layer.__str__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Метод преобразования в строку</p>
+<p>:return: строка со значениями нейронов :rtype: str</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.back_propagation_apply">
+    
+  </a>
+  <a name="back_propagation_apply">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">back_propagation_apply</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#back_propagation_apply" title="main.Layer.back_propagation_apply">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Применение обратного распространения ошибки</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.back_propagation_hidden_l">
+    
+  </a>
+  <a name="back_propagation_hidden_l">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">back_propagation_hidden_l</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">speed</span>):</span>
+    
+    <a class="headerLink" href="#back_propagation_hidden_l" title="main.Layer.back_propagation_hidden_l">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Расчет обратного распространения ошибки на уровне скрытого слоя</p>
+<p>:param speed: скорость обучения :type speed: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.back_propagation_output_l">
+    
+  </a>
+  <a name="back_propagation_output_l">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">back_propagation_output_l</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">refs, </span><span class="rst-sig-param">speed</span>):</span>
+    
+    <a class="headerLink" href="#back_propagation_output_l" title="main.Layer.back_propagation_output_l">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.LayerSoftmax.html" class="internal-link">main.LayerSoftmax</a></code></div>
+    <div><p>Расчет обратного распространения ошибки на уровне выходного слоя</p>
+<p>:param refs: референсы :type refs: list :param speed: скорость обучения :type speed: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.calc">
+    
+  </a>
+  <a name="calc">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">calc</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#calc" title="main.Layer.calc">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.LayerSoftmax.html" class="internal-link">main.LayerSoftmax</a></code></div>
+    <div><p>Применение активационной функции каждого нейрона</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.export">
+    
+  </a>
+  <a name="export">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">export</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#export" title="main.Layer.export">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Экспорт данных с каждого нейрона :return: данные для сохранения :rtype: list</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.get_loss">
+    
+  </a>
+  <a name="get_loss">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">get_loss</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">refs</span>):</span>
+    
+    <a class="headerLink" href="#get_loss" title="main.Layer.get_loss">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.LayerSoftmax.html" class="internal-link">main.LayerSoftmax</a></code></div>
+    <div><p>Подсчет потерь каждого нейрона</p>
+<p>:param refs: референсы :type refs: list :return: потери :rtype: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.import_">
+    
+  </a>
+  <a name="import_">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">import_</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">neurons_data</span>):</span>
+    
+    <a class="headerLink" href="#import_" title="main.Layer.import_">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Импорт данных в каждый нейрон</p>
+<p>:param neurons_data: сохраненные данные :type neurons_data: list</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.reset">
+    
+  </a>
+  <a name="reset">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">reset</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">input=None</span>):</span>
+    
+    <a class="headerLink" href="#reset" title="main.Layer.reset">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Сброс входов всех нейронов</p>
+<p>:param input: данные на вход :type input: list</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Layer.send">
+    
+  </a>
+  <a name="send">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">send</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#send" title="main.Layer.send">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Отправка данных со всех нейронов слоя</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Layer.activation_class">
+    
+  </a>
+  <a name="activation_class">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">activation_class</span> =
+    
+    <a class="headerLink" href="#activation_class" title="main.Layer.activation_class">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.LayerSoftmax.html" class="internal-link">main.LayerSoftmax</a></code></div>
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Layer.bias">
+    
+  </a>
+  <a name="bias">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">bias</span> =
+    
+    <a class="headerLink" href="#bias" title="main.Layer.bias">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Layer.neurons">
+    
+  </a>
+  <a name="neurons">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">neurons</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#neurons" title="main.Layer.neurons">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </main>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container-fluid">
+    <a href="index.html">API Documentation</a> for ImageNN,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    25.10.1 at 2025-12-18 09:23:52.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

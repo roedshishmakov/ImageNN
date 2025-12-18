@@ -1,0 +1,1177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>main.Neuron</title>
+    <meta name="generator" content="pydoctor 25.10.1"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+    
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          ImageNN <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="apidocs-help-button" title="Help" href="apidocs-help.html"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 10px;">
+          <p>For more information on the search, visit the <a href="apidocs-help.html#rst-search">help page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="main.Neuron.html" class="internal-link" title="This class"><wbr></wbr>Neuron</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_loss" class="internal-link" title="main.Neuron.get_loss">get<wbr></wbr>_loss</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="main.Neuron.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__repr__" class="internal-link" title="main.Neuron.__repr__">__repr__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#activation" class="internal-link" title="main.Neuron.activation">activation</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add" class="internal-link" title="main.Neuron.add">add</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_link_input" class="internal-link" title="main.Neuron.add_link_input">add<wbr></wbr>_link<wbr></wbr>_input</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#add_link_output" class="internal-link" title="main.Neuron.add_link_output">add<wbr></wbr>_link<wbr></wbr>_output</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#back_propagation_apply" class="internal-link" title="main.Neuron.back_propagation_apply">back<wbr></wbr>_propagation<wbr></wbr>_apply</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#back_propagation_hidden_l" class="internal-link" title="main.Neuron.back_propagation_hidden_l">back<wbr></wbr>_propagation<wbr></wbr>_hidden<wbr></wbr>_l</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#back_propagation_output_l" class="internal-link" title="main.Neuron.back_propagation_output_l">back<wbr></wbr>_propagation<wbr></wbr>_output<wbr></wbr>_l</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#export" class="internal-link" title="main.Neuron.export">export</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_activation" class="internal-link" title="main.Neuron.get_activation">get<wbr></wbr>_activation</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_activation_derivative" class="internal-link" title="main.Neuron.get_activation_derivative">get<wbr></wbr>_activation<wbr></wbr>_derivative</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#import_" class="internal-link" title="main.Neuron.import_">import_</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#reset" class="internal-link" title="main.Neuron.reset">reset</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#send" class="internal-link" title="main.Neuron.send">send</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#activation_class" class="internal-link" title="main.Neuron.activation_class">activation<wbr></wbr>_class</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#input" class="internal-link" title="main.Neuron.input">input</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#link_input" class="internal-link" title="main.Neuron.link_input">link<wbr></wbr>_input</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#link_output" class="internal-link" title="main.Neuron.link_output">link<wbr></wbr>_output</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#output" class="internal-link" title="main.Neuron.output">output</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="main.html" class="internal-link" title="The parent of this class">main</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.BiasNeuron.html" class="internal-link" title="main.BiasNeuron"><wbr></wbr>Bias<wbr></wbr>Neuron</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.Layer.html" class="internal-link" title="main.Layer"><wbr></wbr>Layer</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.LayerSoftmax.html" class="internal-link" title="main.LayerSoftmax"><wbr></wbr>Layer<wbr></wbr>Softmax</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.Link.html" class="internal-link" title="main.Link"><wbr></wbr>Link</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.NeuralNetwork.html" class="internal-link" title="main.NeuralNetwork"><wbr></wbr>Neural<wbr></wbr>Network</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.Neuron.html" class="internal-link" title="main.Neuron"><wbr></wbr>Neuron</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.NeuronSoftmax.html" class="internal-link" title="main.NeuronSoftmax"><wbr></wbr>Neuron<wbr></wbr>Softmax</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.TransparentNeuron.html" class="internal-link" title="main.TransparentNeuron"><wbr></wbr>Transparent<wbr></wbr>Neuron</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapse-sidebar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <main class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="main.html" class="internal-link">main</a></code><wbr></wbr>.<code><a href="main.Neuron.html" class="internal-link" title="main.Neuron">Neuron</a></code></code></h1>
+          <div id="show-private">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">Neuron</span>:</code></p><p>Known subclasses: <code><a href="main.BiasNeuron.html" class="internal-link">main.BiasNeuron</a></code>, <code><a href="main.NeuronSoftmax.html" class="internal-link">main.NeuronSoftmax</a></code>, <code><a href="main.TransparentNeuron.html" class="internal-link">main.TransparentNeuron</a></code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="main.Neuron.__init__">Neuron(activation_class)</a></code></p><p><a href="classIndex.html#main.Neuron">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>Класс нейрона</p>
+<p>:ivar activation_class: класс активационной функции :type activation_class: ActivationBase :ivar input: вход нейрона :type input: float :ivar output: выход нейрона :type output: float :ivar link_input: список линков на вход :type link_input: list :ivar link_output: список линков на выход :type link_output: list</p>
+</div>
+        </div>
+
+        <div id="split-tables">
+          <table class="children sortable" id="id16">
+  
+  
+  <tr class="staticmethod">
+    
+    <td>Static Method</td>
+    <td><code><a href="#get_loss" class="internal-link" title="main.Neuron.get_loss">get<wbr></wbr>_loss</a></code></td>
+    <td>Метод поиска потерь</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="main.Neuron.__init__">__init__</a></code></td>
+    <td>Конструктор класса</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__repr__" class="internal-link" title="main.Neuron.__repr__">__repr__</a></code></td>
+    <td>Служебный метод вывода значения</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#activation" class="internal-link" title="main.Neuron.activation">activation</a></code></td>
+    <td>Запуск нейрона</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#add" class="internal-link" title="main.Neuron.add">add</a></code></td>
+    <td>Подача сигнала на вход нейрона</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#add_link_input" class="internal-link" title="main.Neuron.add_link_input">add<wbr></wbr>_link<wbr></wbr>_input</a></code></td>
+    <td>Добавление линка на вход</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#add_link_output" class="internal-link" title="main.Neuron.add_link_output">add<wbr></wbr>_link<wbr></wbr>_output</a></code></td>
+    <td>Добавление линка на выход</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#back_propagation_apply" class="internal-link" title="main.Neuron.back_propagation_apply">back<wbr></wbr>_propagation<wbr></wbr>_apply</a></code></td>
+    <td>Применение алгоритма обратного распространения ошибки к каждому линку</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#back_propagation_hidden_l" class="internal-link" title="main.Neuron.back_propagation_hidden_l">back<wbr></wbr>_propagation<wbr></wbr>_hidden<wbr></wbr>_l</a></code></td>
+    <td>Алгоритм обратного распространения ошибки для скрытых уровней</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#back_propagation_output_l" class="internal-link" title="main.Neuron.back_propagation_output_l">back<wbr></wbr>_propagation<wbr></wbr>_output<wbr></wbr>_l</a></code></td>
+    <td>Алгоритм обратного распространения ошибки для выходного уровня</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#export" class="internal-link" title="main.Neuron.export">export</a></code></td>
+    <td>Экспорт данных</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_activation" class="internal-link" title="main.Neuron.get_activation">get<wbr></wbr>_activation</a></code></td>
+    <td>Выполняет активационную функцию нейрона</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_activation_derivative" class="internal-link" title="main.Neuron.get_activation_derivative">get<wbr></wbr>_activation<wbr></wbr>_derivative</a></code></td>
+    <td>Метод получения производной функции активации</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#import_" class="internal-link" title="main.Neuron.import_">import_</a></code></td>
+    <td>Импорт сохраненных данных</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#reset" class="internal-link" title="main.Neuron.reset">reset</a></code></td>
+    <td>Сброс входа нейрона</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#send" class="internal-link" title="main.Neuron.send">send</a></code></td>
+    <td>Отправка данных с выхода на линки</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#activation_class" class="internal-link" title="main.Neuron.activation_class">activation<wbr></wbr>_class</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#input" class="internal-link" title="main.Neuron.input">input</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#link_input" class="internal-link" title="main.Neuron.link_input">link<wbr></wbr>_input</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#link_output" class="internal-link" title="main.Neuron.link_output">link<wbr></wbr>_output</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#output" class="internal-link" title="main.Neuron.output">output</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="child-list">
+          <div class="basestaticmethod">
+  
+  
+  <a name="main.Neuron.get_loss">
+    
+  </a>
+  <a name="get_loss">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <div><span class="decorator">@staticmethod<br /></span></div>
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">get_loss</span><span class="function-signature">(<span class="rst-sig-param">output, </span><span class="rst-sig-param">ref</span>):</span>
+    
+    <a class="headerLink" href="#get_loss" title="main.Neuron.get_loss">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Метод поиска потерь</p>
+<p>:param output: выходное значение :type output: float :param ref: референс :type ref: float :return: потеря :rtype: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__init__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">activation_class</span>):</span>
+    
+    <a class="headerLink" href="#__init__" title="main.Neuron.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.BiasNeuron.html" class="internal-link">main.BiasNeuron</a></code>, <code><a href="main.NeuronSoftmax.html" class="internal-link">main.NeuronSoftmax</a></code></div>
+    <div><p>Конструктор класса</p>
+<p>:param activation_class:  Активационная функция :type activation_class: ActivationBase</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.__repr__">
+    
+  </a>
+  <a name="__repr__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__repr__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#__repr__" title="main.Neuron.__repr__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Служебный метод вывода значения</p>
+<p>:return: строка со значениями входа и выхода :rtype: str</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.activation">
+    
+  </a>
+  <a name="activation">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">activation</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#activation" title="main.Neuron.activation">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.NeuronSoftmax.html" class="internal-link">main.NeuronSoftmax</a></code>, <code><a href="main.TransparentNeuron.html" class="internal-link">main.TransparentNeuron</a></code></div>
+    <div><p>Запуск нейрона</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.add">
+    
+  </a>
+  <a name="add">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">add</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">signal</span>):</span>
+    
+    <a class="headerLink" href="#add" title="main.Neuron.add">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Подача сигнала на вход нейрона</p>
+<p>:param signal: подаваемый сигнал</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.add_link_input">
+    
+  </a>
+  <a name="add_link_input">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">add_link_input</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">link</span>):</span>
+    
+    <a class="headerLink" href="#add_link_input" title="main.Neuron.add_link_input">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Добавление линка на вход</p>
+<p>:param link: добавляемый линк :type link: Link :raises TypeError: при добавлении в список линков не линка</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.add_link_output">
+    
+  </a>
+  <a name="add_link_output">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">add_link_output</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">link</span>):</span>
+    
+    <a class="headerLink" href="#add_link_output" title="main.Neuron.add_link_output">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Добавление линка на выход</p>
+<p>:param link: добавляемый линк :type link: Link :raises TypeError: при добавлении не линка в список выходных линков</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.back_propagation_apply">
+    
+  </a>
+  <a name="back_propagation_apply">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">back_propagation_apply</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#back_propagation_apply" title="main.Neuron.back_propagation_apply">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Применение алгоритма обратного распространения ошибки к каждому линку</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.back_propagation_hidden_l">
+    
+  </a>
+  <a name="back_propagation_hidden_l">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">back_propagation_hidden_l</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">speed</span>):</span>
+    
+    <a class="headerLink" href="#back_propagation_hidden_l" title="main.Neuron.back_propagation_hidden_l">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Алгоритм обратного распространения ошибки для скрытых уровней</p>
+<p>:param speed: скорость обучения :type speed: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.back_propagation_output_l">
+    
+  </a>
+  <a name="back_propagation_output_l">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">back_propagation_output_l</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">ref, </span><span class="rst-sig-param">speed</span>):</span>
+    
+    <a class="headerLink" href="#back_propagation_output_l" title="main.Neuron.back_propagation_output_l">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Алгоритм обратного распространения ошибки для выходного уровня</p>
+<p>:param ref: тренировочный пример :type ref: float :param speed: скорость обучения :type speed: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.export">
+    
+  </a>
+  <a name="export">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">export</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#export" title="main.Neuron.export">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Экспорт данных</p>
+<p>:return: список линков :rtype: list[Link]</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.get_activation">
+    
+  </a>
+  <a name="get_activation">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">get_activation</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">x</span>):</span>
+    
+    <a class="headerLink" href="#get_activation" title="main.Neuron.get_activation">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.NeuronSoftmax.html" class="internal-link">main.NeuronSoftmax</a></code></div>
+    <div><p>Выполняет активационную функцию нейрона</p>
+<p>:param x: вход :type x: float :return: результат активации :rtype: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.get_activation_derivative">
+    
+  </a>
+  <a name="get_activation_derivative">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">get_activation_derivative</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">x</span>):</span>
+    
+    <a class="headerLink" href="#get_activation_derivative" title="main.Neuron.get_activation_derivative">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.NeuronSoftmax.html" class="internal-link">main.NeuronSoftmax</a></code></div>
+    <div><p>Метод получения производной функции активации</p>
+<p>:param x: значение на вход функции :type x: float :return: выход с функции производной :rtype: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.import_">
+    
+  </a>
+  <a name="import_">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">import_</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">links_data</span>):</span>
+    
+    <a class="headerLink" href="#import_" title="main.Neuron.import_">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Импорт сохраненных данных</p>
+<p>:param links_data: данные линков :type links_data: list[Link]</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.reset">
+    
+  </a>
+  <a name="reset">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">reset</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">input=0</span>):</span>
+    
+    <a class="headerLink" href="#reset" title="main.Neuron.reset">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.BiasNeuron.html" class="internal-link">main.BiasNeuron</a></code></div>
+    <div><p>Сброс входа нейрона</p>
+<p>:param input: новый вход, по умолчанию None :type input: int</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Neuron.send">
+    
+  </a>
+  <a name="send">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">send</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#send" title="main.Neuron.send">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Отправка данных с выхода на линки</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Neuron.activation_class">
+    
+  </a>
+  <a name="activation_class">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">activation_class</span> =
+    
+    <a class="headerLink" href="#activation_class" title="main.Neuron.activation_class">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Neuron.input">
+    
+  </a>
+  <a name="input">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">input</span> =
+    
+    <a class="headerLink" href="#input" title="main.Neuron.input">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Neuron.link_input">
+    
+  </a>
+  <a name="link_input">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">link_input</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#link_input" title="main.Neuron.link_input">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Neuron.link_output">
+    
+  </a>
+  <a name="link_output">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">link_output</span>: <code>list</code> =
+    
+    <a class="headerLink" href="#link_output" title="main.Neuron.link_output">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Neuron.output">
+    
+  </a>
+  <a name="output">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">output</span> =
+    
+    <a class="headerLink" href="#output" title="main.Neuron.output">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="main.BiasNeuron.html" class="internal-link">main.BiasNeuron</a></code>, <code><a href="main.NeuronSoftmax.html" class="internal-link">main.NeuronSoftmax</a></code>, <code><a href="main.TransparentNeuron.html" class="internal-link">main.TransparentNeuron</a></code></div>
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </main>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container-fluid">
+    <a href="index.html">API Documentation</a> for ImageNN,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    25.10.1 at 2025-12-18 09:23:52.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>main.Link</title>
+    <meta name="generator" content="pydoctor 25.10.1"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+    
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          ImageNN <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="apidocs-help-button" title="Help" href="apidocs-help.html"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 10px;">
+          <p>For more information on the search, visit the <a href="apidocs-help.html#rst-search">help page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="main.Link.html" class="internal-link" title="This class"><wbr></wbr>Link</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="main.Link.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#apply_weight_delta" class="internal-link" title="main.Link.apply_weight_delta">apply<wbr></wbr>_weight<wbr></wbr>_delta</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#back_propagation_hidden_l" class="internal-link" title="main.Link.back_propagation_hidden_l">back<wbr></wbr>_propagation<wbr></wbr>_hidden<wbr></wbr>_l</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#back_propagation_output_l" class="internal-link" title="main.Link.back_propagation_output_l">back<wbr></wbr>_propagation<wbr></wbr>_output<wbr></wbr>_l</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#export" class="internal-link" title="main.Link.export">export</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#import_" class="internal-link" title="main.Link.import_">import_</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#send" class="internal-link" title="main.Link.send">send</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#n_from" class="internal-link" title="main.Link.n_from">n<wbr></wbr>_from</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#n_to" class="internal-link" title="main.Link.n_to">n<wbr></wbr>_to</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#weight" class="internal-link" title="main.Link.weight">weight</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#weight_delta" class="internal-link" title="main.Link.weight_delta">weight<wbr></wbr>_delta</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#weight_delta_param" class="internal-link" title="main.Link.weight_delta_param">weight<wbr></wbr>_delta<wbr></wbr>_param</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="main.html" class="internal-link" title="The parent of this class">main</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.BiasNeuron.html" class="internal-link" title="main.BiasNeuron"><wbr></wbr>Bias<wbr></wbr>Neuron</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.Layer.html" class="internal-link" title="main.Layer"><wbr></wbr>Layer</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.LayerSoftmax.html" class="internal-link" title="main.LayerSoftmax"><wbr></wbr>Layer<wbr></wbr>Softmax</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.Link.html" class="internal-link" title="main.Link"><wbr></wbr>Link</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.NeuralNetwork.html" class="internal-link" title="main.NeuralNetwork"><wbr></wbr>Neural<wbr></wbr>Network</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.Neuron.html" class="internal-link" title="main.Neuron"><wbr></wbr>Neuron</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.NeuronSoftmax.html" class="internal-link" title="main.NeuronSoftmax"><wbr></wbr>Neuron<wbr></wbr>Softmax</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="main.TransparentNeuron.html" class="internal-link" title="main.TransparentNeuron"><wbr></wbr>Transparent<wbr></wbr>Neuron</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapse-sidebar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <main class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="main.html" class="internal-link">main</a></code><wbr></wbr>.<code><a href="main.Link.html" class="internal-link" title="main.Link">Link</a></code></code></h1>
+          <div id="show-private">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">Link</span>:</code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="main.Link.__init__">Link(n_from, n_to, weight)</a></code></p><p><a href="classIndex.html#main.Link">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>Класс 'линка'</p>
+<p>:ivar n_from: нейрон, из которого получают данные :type n_from: Neuron :ivar n_to: нейрон, в который передаются данные :type n_to: Neuron :ivar weight: вес :type weight: float</p>
+</div>
+        </div>
+
+        <div id="split-tables">
+          <table class="children sortable" id="id23">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="main.Link.__init__">__init__</a></code></td>
+    <td>Инициализация объекта</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#apply_weight_delta" class="internal-link" title="main.Link.apply_weight_delta">apply<wbr></wbr>_weight<wbr></wbr>_delta</a></code></td>
+    <td>Применение изменения веса</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#back_propagation_hidden_l" class="internal-link" title="main.Link.back_propagation_hidden_l">back<wbr></wbr>_propagation<wbr></wbr>_hidden<wbr></wbr>_l</a></code></td>
+    <td>Метод обратного распространения ошибки для скрытых уровней</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#back_propagation_output_l" class="internal-link" title="main.Link.back_propagation_output_l">back<wbr></wbr>_propagation<wbr></wbr>_output<wbr></wbr>_l</a></code></td>
+    <td>Метод обратного распространения ошибки для выходного слоя</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#export" class="internal-link" title="main.Link.export">export</a></code></td>
+    <td>Экспорт данных</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#import_" class="internal-link" title="main.Link.import_">import_</a></code></td>
+    <td>Импорт сохраненных данных</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#send" class="internal-link" title="main.Link.send">send</a></code></td>
+    <td>Метод передачи данных из одного нейрона в другой</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#n_from" class="internal-link" title="main.Link.n_from">n<wbr></wbr>_from</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#n_to" class="internal-link" title="main.Link.n_to">n<wbr></wbr>_to</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#weight" class="internal-link" title="main.Link.weight">weight</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#weight_delta" class="internal-link" title="main.Link.weight_delta">weight<wbr></wbr>_delta</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#weight_delta_param" class="internal-link" title="main.Link.weight_delta_param">weight<wbr></wbr>_delta<wbr></wbr>_param</a></code></td>
+    <td><span class="rst-undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="child-list">
+          <div class="basemethod">
+  
+  
+  <a name="main.Link.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">__init__</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">n_from, </span><span class="rst-sig-param">n_to, </span><span class="rst-sig-param">weight</span>):</span>
+    
+    <a class="headerLink" href="#__init__" title="main.Link.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Инициализация объекта</p>
+<p>:param n_from: нейрон, из которого получают данные :type n_from: Neuron :param n_to: нейрон, в который передаются данные :type n_to: Neuron :param weight: вес :type weight: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Link.apply_weight_delta">
+    
+  </a>
+  <a name="apply_weight_delta">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">apply_weight_delta</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#apply_weight_delta" title="main.Link.apply_weight_delta">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Применение изменения веса</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Link.back_propagation_hidden_l">
+    
+  </a>
+  <a name="back_propagation_hidden_l">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">back_propagation_hidden_l</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">speed=1</span>):</span>
+    
+    <a class="headerLink" href="#back_propagation_hidden_l" title="main.Link.back_propagation_hidden_l">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Метод обратного распространения ошибки для скрытых уровней</p>
+<p>:param speed: скорость обучения :type speed: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Link.back_propagation_output_l">
+    
+  </a>
+  <a name="back_propagation_output_l">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">back_propagation_output_l</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">ref, </span><span class="rst-sig-param">speed=1</span>):</span>
+    
+    <a class="headerLink" href="#back_propagation_output_l" title="main.Link.back_propagation_output_l">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Метод обратного распространения ошибки для выходного слоя</p>
+<p>:param ref: пример :type ref: float :param speed: скорость обучения :type speed: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Link.export">
+    
+  </a>
+  <a name="export">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">export</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span></span>):</span>
+    
+    <a class="headerLink" href="#export" title="main.Link.export">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Экспорт данных</p>
+<p>:return: вес линка :rtype: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Link.import_">
+    
+  </a>
+  <a name="import_">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">import_</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">value</span>):</span>
+    
+    <a class="headerLink" href="#import_" title="main.Link.import_">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Импорт сохраненных данных</p>
+<p>:param value: сохраненное значение :type value: float</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="main.Link.send">
+    
+  </a>
+  <a name="send">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span>&#160;<span class="py-defname">send</span><span class="function-signature">(<span class="rst-sig-param"><span class="rst-undocumented">self</span>, </span><span class="rst-sig-param">signal</span>):</span>
+    
+    <a class="headerLink" href="#send" title="main.Link.send">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Метод передачи данных из одного нейрона в другой</p>
+<p>:param signal: данные для передачи</p>
+</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Link.n_from">
+    
+  </a>
+  <a name="n_from">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">n_from</span> =
+    
+    <a class="headerLink" href="#n_from" title="main.Link.n_from">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Link.n_to">
+    
+  </a>
+  <a name="n_to">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">n_to</span> =
+    
+    <a class="headerLink" href="#n_to" title="main.Link.n_to">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Link.weight">
+    
+  </a>
+  <a name="weight">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">weight</span> =
+    
+    <a class="headerLink" href="#weight" title="main.Link.weight">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Link.weight_delta">
+    
+  </a>
+  <a name="weight_delta">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">weight_delta</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#weight_delta" title="main.Link.weight_delta">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="main.Link.weight_delta_param">
+    
+  </a>
+  <a name="weight_delta_param">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">weight_delta_param</span>: <code>int</code> =
+    
+    <a class="headerLink" href="#weight_delta_param" title="main.Link.weight_delta_param">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </main>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container-fluid">
+    <a href="index.html">API Documentation</a> for ImageNN,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    25.10.1 at 2025-12-18 09:23:52.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>
