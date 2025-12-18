@@ -375,7 +375,7 @@ class Link:
         """
 
         if not isinstance(ref, float):
-            raise TypeError(f"Speed {speed} must be of type float")
+            raise TypeError(f"Reference {ref} must be of type float")
         if not isinstance(speed, float):
             raise TypeError(f"Speed {speed} must be of type float")
 
