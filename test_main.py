@@ -153,7 +153,7 @@ def test_layer_reset_negative():
 
 def test_layer_calc():
     layer = Layer(Neuron, 2, act.ActivationTransparent, False)
-    layer.reset([2, 3.0])
+    layer.reset([2.0, 3.0])
     layer.calc()
 
     assert layer.neurons[0].input == 2.0
@@ -208,7 +208,7 @@ def test_NN_initialization():
 
     nn.add_input_layer(2)
     nn.add_layer(3, act.ActivationRelu)
-    nn.add_softmax_layer(2)
+    nn.add_layer(2, act.ActivationSoftmax)
 
     assert len(nn.layers) == 3
     assert len(nn.layers[0]) == 2
